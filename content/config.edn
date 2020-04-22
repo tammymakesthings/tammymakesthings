@@ -1,0 +1,32 @@
+{:site-title                   "tammy makes things"
+ :author                       "Tammy Cravit"
+ :description                  "hardware hacking, software, writing, tech, productivity, miscellany"
+ :site-url                     "https://tammymakesthings.com"
+ :post-root                    "posts"
+ :page-root                    "pages"
+ :public-dest                  "/var/www/tammymakesthings"
+ :blog-prefix                  "/"
+ :rss-name                     "feed.xml"
+ :rss-filters                  ["cryogen"]
+ :recent-posts                 5
+ :post-date-format             "yyyy-MM-dd"
+ :archive-group-format         "yyyy MMMM"
+ :sass-src                     []
+ :sass-path                    "sass"
+ :theme                        "tammycravit"
+ :resources                    ["img"]
+ :keep-files                   [".git"]
+ :disqus?                      true
+ :disqus-shortname             "tammy-makes-things"
+ :ignored-files                [#"\.#.*" #".*\.swp$"]
+ :previews?                    false
+ :posts-per-page               5
+ :blocks-per-preview           2
+ :clean-urls                   :trailing-slash
+ :collapse-subdirs?            false
+ :hide-future-posts?           true
+ :klipse {:settings {:selector ".klipse-cljs"
+                     :selector-reagent ".klipse-reagent"
+                     :selector-eval-ruby ".klipse-ruby"}}
+ :description-include-elements #{:p :h1 :h2 :h3 :h4 :h5 :h6}
+ :debug?                       false}
