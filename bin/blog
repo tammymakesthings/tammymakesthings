@@ -1,0 +1,153 @@
+#!/bin/env python
+
+
+"""Simple helper for cryogen blog functions."""
+
+
+import os
+from os import path
+import re
+from datetime import date
+import click
+
+PARENT_DIR_PATH = "/home/tammy/projects/blog"
+
+
+# Helper methods
+
+
+def confirm(prompt):
+    """Prompt the user with a y/n confirmation."""
+    response = input(f"{prompt}? ")
+    return str(response).lower().startswith("y")
+
+
+def read_content_title(content_type='post'):
+    """Read the post/page title and return it and the slug."""
+    content_title_str = ""
+    while len(content_title_str) == 0:
+        content_title_str = input(f"Enter {content_type} title: ")
+    content_slug_str = re.sub(
+        r'[^a-zA-Z0-9_-]',
+        '',
+        content_title_str.lower().replace(" ", "-")
+    )
+    return content_title_str, content_slug_str
+
+
+def make_content_dir(content_type, slug, path_extra=""):
+    """Create a directory for content with image files."""
+    content_dir = os.path.join(
+        PARENT_DIR_PATH,
+        "content", "md", f"{content_type}s",
+        path_extra,
+        slug
+    )
+    if path.exists(content_dir):
+        return
+    os.makedirs(content_dir)
+
+
+def make_content_file(content_type, title, slug,
+                      include_date=True, make_dir=False,
+                      path_extra=""):
+    """Generate the empty content file."""
+    today = date.today().strftime("%Y-%m-%d")
+
+    if include_date:
+        short_name = f"{today}-{slug}"
+    else:
+        short_name = f"{slug}"
+
+    if make_dir:
+        make_content_dir(content_type, slug, path_extra)
+        post_filename = os.path.join(
+            PARENT_DIR_PATH,
+            "content", "md", f"{content_type}s",
+            path_extra,
+            short_name,
+            f"{short_name}.md"
+        )
+    else:
+        post_filename = os.path.join(
+            PARENT_DIR_PATH,
+            "content", "md", f"{content_type}s",
+            path_extra,
+            f"{short_name}.md"
+        )
+
+    if path.exists(post_filename):
+        if not confirm(f"Overwrite {content_type} '{short_name}'"):
+            print("Aborting!")
+            return
+
+    if path_extra is not None and len(path_extra) > 0:
+        print(f"Making {content_type} '{title}' in {path_extra}/{short_name}")
+    else:
+        print(f"Making {content_type} '{title}' in {short_name}")
+
+    with open(post_filename, "w") as file_handle:
+        file_handle.write("{\n")
+        file_handle.write(f"  :title  \"{title}\"\n")
+        file_handle.write("  :tags   [\"misc\"]\n")
+        file_handle.write(f"  :layout :{content_type}\n")
+        file_handle.write("}\n\n")
+
+    print("Done.")
+
+
+# Click interface
+
+
+@click.group()
+def cryogen():
+    """Manage the tammymakesthings.com cryogen blog."""
+    return
+
+
+@cryogen.command()
+def new_post():
+    """Make a new post."""
+    print("* Generating new blog post...")
+    print("")
+    the_title, the_slug = read_content_title('post')
+    r_mkdir = confirm(f"Make content directory for '{the_slug}'")
+    make_content_file('post', the_title, the_slug, make_dir=r_mkdir,
+                      include_date=True, path_extra="")
+
+
+@cryogen.command()
+def new_page():
+    """Make a new page"""
+    print("* Generating new page...")
+    print("")
+    the_title, the_slug = read_content_title('page')
+    r_mkdir = confirm(f"Make content directory for '{the_slug}'")
+    make_content_file('page', the_title, the_slug, make_dir=r_mkdir,
+                      include_date=False, path_extra="")
+
+
+@cryogen.command()
+def new_project():
+    """Make a new project"""
+    print("* Generating new project...")
+    print("")
+    the_title, the_slug = read_content_title('project')
+    r_mkdir = True
+    make_content_file('page', the_title, the_slug, make_dir=r_mkdir,
+                      include_date=False, path_extra="projects")
+
+
+@cryogen.command()
+def generate():
+    """Regenerate the blog content."""
+    print("* Regenerating blog contents...")
+    print("")
+    pwd = os.getcwd()
+    os.chdir(PARENT_DIR_PATH)
+    os.system("lein run")
+    os.chdir(pwd)
+
+
+if __name__ == "__main__":
+    cryogen()
