@@ -59,18 +59,18 @@
        default))
    ))
 
-(defn path-for
+(dbgn (defn path-for
   "Get the path for a content file."
 
   ([content-def]
-   (path-for
-     (content-def :kind)
-     (content-def :path-extra)
-     (slug-or-title (str (content-def :slug))
-                    (str (content-def :title))
-                    "default-slug")
-     (content-def :include-date?)
-     (content-def :make-subdir?)))
+     (path-for
+       (content-def :kind)
+       (content-def :path-extra)
+       (slug-or-title (str (content-def :slug))
+                      (str (content-def :title))
+                      "default-slug")
+       (content-def :include-date?)
+       (content-def :make-subdir?)))
 
   ([kind slug]
    (path-for kind "" slug false false))
@@ -78,31 +78,52 @@
   ([kind path-extra slug]
    (path-for kind path-extra slug false false))
 
-  ([kind path-extra slug include-date? make-subdir?]
+  ([kind path-extra slug include-date make-subdir]
    (path-join
     (content-basedir)
      "content/md"
      (clojure.string/replace (str kind "s") ":" "")
-     (if (nil? path-extra) "" (str path-extra))
-     (if make-subdir? (str slug) "")
-     (if include-date?
+     (if (or (nil? path-extra) (= (count path-extra) 0))
+       ""
+       (str path-extra))
+     (if make-subdir
+       (str slug)
+       "")
+     (if include-date
       (str (.format (java.text.SimpleDateFormat. "yyyy-MM-dd")
                     (new java.util.Date)) "-" slug ".md")
-      (str slug ".md")))))
+      (str slug ".md"))))))
 
-(defn create-new-content!
+(defn maybe-make-tags-array
+  "Convert an array of tags to a string (Markdown) representation."
+  [tags]
+  (if (or (nil? tags) (= (count tags) 0))
+    ""
+    (str
+       "  :tags   ["
+       (clojure.string/join ", " (map #(str "\"" % "\"") tags))
+       "]\n"
+    )))
+
+(dbgn (defn make-empty-file-contents
+  "Build the contents of the empty file and return it as a string."
+  [content-def]
+  (str "{\n"
+       "  :title  \"" (content-def :title) "\n"
+       "  :layout "   (content-def :kind) "\n"
+       (maybe-make-tags-array (content-def :tags))
+       "}\n\n")))
+
+(dbgn (defn make-content-item!
   "Create a new content item, creating its content subdirectory if needed."
   [content-def]
-  (let [filename (path-for content-def)]
+  (let [
+        filename      (path-for content-def)
+        file-contents (make-empty-file-contents content-def)
+       ]
     (if (content-def :make-subdir?)
       (io/make-parents filename))
-    (with-open [w (io/writer filename )]
-      (.write w "{\n")
-      (.write w (str "  :title  \"" (str (content-def :title)) "\"\n"))
-      (.write w (str "  :layout " (str (content-def :kind)) "\n"))
-      (.write w "  :tags   [\"admin\"]")
-      (.write w "}\n\n")
-      )))
+    (spit filename file-contents))))
 
 (defn make-page!
   "Create a new page."
@@ -110,7 +131,7 @@
   (let [title (helpers/get-user-input "Page title:" "")]
     (if (empty? title)
       (println "No title provided - aborting!")
-      (create-new-content!
+      (make-content-item!
        {
         :title         title
         :slug          (title-to-slug title)
@@ -126,7 +147,7 @@
   (let [title (helpers/get-user-input "Page title:" "")]
     (if (empty? title)
       (println "No title provided - aborting!")
-      (create-new-content!
+      (make-content-item!
        {
         :title         title
         :slug          (title-to-slug title)
@@ -142,7 +163,7 @@
   (let [title (helpers/get-user-input "Project title:" "")]
     (if (empty? title)
       (println "No title provided - aborting!")
-      (create-new-content!
+      (make-content-item!
        {
         :title         title
         :slug          (title-to-slug title)
