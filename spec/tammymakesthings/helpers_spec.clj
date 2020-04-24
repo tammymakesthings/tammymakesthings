@@ -1,14 +1,13 @@
 (ns tammymakesthings.helpers-spec
-  (:require [speclj.core :refer all]
-            [tammymakesthings.helpers :refer all]))
+  (:require [speclj.core :refer :all]
+            [tammymakesthings.helpers :refer :all]))
 
-(describe
-  "tammymakesthings helpers"
+(describe "Tammy Makes Things - Cryogen Helpers"
 
   (it "is true"
-      (should true))
+    (should true))
 
-  (it "is false"
-      (should-not true)))
+  (it "is not false"
+    (should-not false)))
 
 (run-specs)
