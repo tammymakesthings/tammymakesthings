@@ -8,6 +8,7 @@
                            [compojure "1.6.1"]
                            [ring-server "0.5.0"]
                            [cryogen-flexmark "0.1.2"]
+                           [org.clojure/tools.cli "1.0.194"]
                            [cryogen-core "0.3.1"]]
             :plugins [[lein-ring "0.12.5"]]
             :main cryogen.core
