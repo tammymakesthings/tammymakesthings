@@ -1,3 +1,20 @@
+;;;; -*- mode: clojure ; fill-column: 78 -*-
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;; tammymakesthings - Static blog generator for tammymakesthings.com
+;;;; File         : helpers.clj
+;;;; Description  : Generic helper functions.
+;;;; Last Updated : Time-stamp: <>
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;; Based on the cryogen static site builder
+;;;; (github - cryogen-project/cryogen)
+;;;;
+;;;; Extended by Tammy Cravit <tammymakesthings@gmail.com> with site admin
+;;;; and other tweaks.
+;;;;
+;;;; Source : github - tammymakesthings/tammymakesthings
+;;;; License: Eclipse Public License, eclipse.org/legal/epl-v10.html
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
 (ns tammymakesthings.helpers
   (:require [cryogen-core.compiler :refer [compile-assets-timed]]
             [clojure.java.io :as io]
