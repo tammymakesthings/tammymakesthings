@@ -18,9 +18,25 @@
    [philoskim/debux "0.6.5"]
    [slugger "1.0.1"]
   ]
+  :profiles
+  {
+    :dev
+    {
+     :dependencies
+      [
+        [speclj "3.3.0"]
+      ]
+    }
+  }
+
   :plugins
   [
    [lein-ring "0.12.5"]
+   [speclj "3.3.0"]
+  ]
+  :test-paths
+  [
+    "spec"
   ]
   :aliases
   {
