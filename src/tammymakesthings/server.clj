@@ -1,5 +1,5 @@
-(ns cryogen.server
-  (:require 
+(ns tammymakesthings.server
+  (:require
    [clojure.string :as string]
    [compojure.core :refer [GET defroutes]]
    [compojure.route :as route]
