@@ -10,3 +10,6 @@ pom.xml.asc
 .lein-plugins/
 .lein-failures
 /public/
+.nrepl-port
+.rebel_readline_history
+*.swp
