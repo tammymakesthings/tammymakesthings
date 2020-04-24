@@ -94,7 +94,6 @@
   "Create a new content item, creating its content subdirectory if needed."
   [content-def]
   (let [filename (path-for content-def)]
-    (dbug filename)
     (if (content-def :make-subdir?)
       (io/make-parents filename))
     (with-open [w (io/writer filename )]
