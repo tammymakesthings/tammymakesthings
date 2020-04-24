@@ -3,7 +3,7 @@
 ;;;; tammymakesthings - Static blog generator for tammymakesthings.com
 ;;;; File         : helpers.clj
 ;;;; Description  : Generic helper functions.
-;;;; Last Updated : Time-stamp: <>
+;;;; Last Updated : Time-stamp: <2020-04-24 17:45:42 tammy>
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; Based on the cryogen static site builder
 ;;;; (github - cryogen-project/cryogen)

@@ -3,7 +3,7 @@
 ;;;; tammymakesthings - Static blog generator for tammymakesthings.com
 ;;;; File         : generator.clj
 ;;;; Description  : Content generator (posts, pages, projects, etc)
-;;;; Last Updated : Time-stamp: <>
+;;;; Last Updated : Time-stamp: <2020-04-24 17:45:05 tammy>
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; Based on the cryogen static site builder
 ;;;; (github - cryogen-project/cryogen)
@@ -44,10 +44,12 @@
 
 (defn slug-or-title
   "Make the slug for a post from the content-def."
+
   (
    [slug title]
    (slug-or-title slug title "default-content")
   )
+
   (
    [slug title default]
    (if (> (count slug) 0)
@@ -92,6 +94,7 @@
   "Create a new content item, creating its content subdirectory if needed."
   [content-def]
   (let [filename (path-for content-def)]
+    (dbug filename)
     (if (content-def :make-subdir?)
       (io/make-parents filename))
     (with-open [w (io/writer filename )]
