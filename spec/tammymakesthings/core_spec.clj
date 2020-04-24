@@ -2,12 +2,12 @@
   (:require [speclj.core :refer :all]
             [tammymakesthings.core :refer :all]))
 
-(describe "Tammy Makes Things - Cryogen Core"
+(describe "tammymakesthings.core"
 
-  (it "is true"
-    (should true))
-
-  (it "is not false"
-    (should-not false)))
+  (describe "dispatch-arg"
+    (it "should be defined"
+        (pending))
+  )
+)
 
 (run-specs)

@@ -2,12 +2,33 @@
   (:require [speclj.core :refer :all]
             [tammymakesthings.helpers :refer :all]))
 
-(describe "Tammy Makes Things - Cryogen Helpers"
+(describe "tammymakesthings.helpers"
 
-  (it "is true"
-    (should true))
+  (describe "get-user-input"
+    (it "should be defined"
+      (pending))
+  )
 
-  (it "is not false"
-    (should-not false)))
+  (describe "prompt-y-or-n"
+    (it "should be defined"
+      (pending))
+  )
+
+
+  (describe "display-version!"
+    (it "should be defined"
+      (pending))
+  )
+
+  (describe "app-banner"
+    (it "should be defined"
+      (pending))
+  )
+
+  (describe "display-help!"
+    (it "should be defined"
+      (pending))
+  )
+)
 
 (run-specs)

@@ -1,13 +1,68 @@
-(ns tammymakesthings.generator
+(ns tammymakesthings.generator-spec
   (:require [speclj.core :refer :all]
             [tammymakesthings.generator :refer :all]))
 
-(describe "Tammy Makes Things - Cryogen Content Generator"
+(describe "tammymakesthings.generator"
 
-  (it "is true"
-    (should true))
+  (describe "content-basedir"
+    (it "should be defined"
+      (pending))
+    )
 
-  (it "is not false"
-    (should-not false)))
+  (describe "path-join"
+    (it "should be defined"
+      (pending))
+    )
+
+  (describe "title-to-slug"
+    (it "should be defined"
+      (pending))
+    )
+
+  (describe "slug-or-title"
+    (it "should be defined"
+      (pending))
+    )
+
+  (describe "path-for"
+    (it "should be defined"
+      (pending))
+    )
+
+  (describe "maybe-make-tags-array"
+    (it "should be defined"
+      (pending))
+    )
+
+  (describe "make-empty-file-contents"
+    (it "should be defined"
+      (pending))
+    )
+
+  (describe "make-content-item!"
+    (it "should be defined"
+      (pending))
+    )
+
+  (describe "make-page!"
+    (it "should be defined"
+      (pending))
+    )
+
+  (describe "make-post!"
+    (it "should be defined"
+      (pending))
+    )
+
+  (describe "make-project!"
+    (it "should be defined"
+      (pending))
+    )
+
+  (describe "build-site!"
+    (it "should be defined"
+      (pending))
+  )
+)
 
 (run-specs)
