@@ -1,0 +1,10 @@
+# ./.tmuxinator.yml
+
+name: tammymakesthings
+root: ~/projects/blog
+
+windows:
+  - editor: emacs
+  - repl: lein repl
+  - specs: lein spec -a
+  - shell: zsh --login
