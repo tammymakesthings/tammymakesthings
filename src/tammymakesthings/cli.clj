@@ -3,7 +3,7 @@
 ;;;; tammymakesthings - Static blog generator for tammymakesthings.com
 ;;;; File         : cli.clj
 ;;;; Description  : CLI helper functions.
-;;;; Last Updated : Time-stamp: <2020-04-25 19:35:55 tammy>
+;;;; Last Updated : Time-stamp: <2020-04-25 20:28:04 tammy>
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; Based on the cryogen static site builder
 ;;;; (github - cryogen-project/cryogen)
@@ -100,7 +100,7 @@
 (defn make-project!
   "Prompts the user for necessary information and makes a new project."
   (
-   [title make-subdir?]
+   [title]
    (if (= 0 (count title))
      (do
        (println("Error: Title not specified!"))

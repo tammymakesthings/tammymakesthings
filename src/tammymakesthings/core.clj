@@ -3,7 +3,7 @@
 ;;;; tammymakesthings - Static blog generator for tammymakesthings.com
 ;;;; File         : core.clj
 ;;;; Description  : Core functions and entrypoint for the site generator.
-;;;; Last Updated : Time-stamp: <2020-04-25 19:36:03 tammy>
+;;;; Last Updated : Time-stamp: <2020-04-25 20:28:12 tammy>
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; Based on the cryogen static site builder
 ;;;; (github - cryogen-project/cryogen)
