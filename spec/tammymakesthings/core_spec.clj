@@ -6,7 +6,7 @@
 
   (describe "dispatch-arg"
     (it "should be defined"
-        (pending))
+        (should (fn? dispatch-arg)))
   )
 )
 
