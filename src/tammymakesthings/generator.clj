@@ -113,7 +113,8 @@
        ]
     (if (content-def :make-subdir?)
       (io/make-parents filename))
-    (spit filename file-contents)))
+    (spit filename file-contents)
+    (println filename)))
 
 (defn build-site!
   []
