@@ -1,42 +1,42 @@
-(ns tammymakesthings.helpers-spec
+(ns tammymakesthings.cli-spec
   (:require [speclj.core :refer :all]
-            [tammymakesthings.helpers :refer :all]))
+            [tammymakesthings.cli :refer :all]))
 
-(describe 
-  "tammymakesthings.helpers"
-  
-  (context 
+(describe
+  "tammymakesthings.cli"
+
+  (context
     "get-user-input"
-    
+
     (it "should be defined"
         (should (fn? get-user-input)))
     )
-  
-  (context 
+
+  (context
     "prompt-y-or-n"
-    
+
     (it "should be defined"
         (should (fn? prompt-y-or-n)))
     )
-  
-  
-  (context 
+
+
+  (context
     "display-version!"
-    
+
     (it "should be defined"
         (should (fn? display-version!)))
     )
-  
-  (context 
+
+  (context
     "app-banner"
-    
+
     (it "should be defined"
         (should (fn? app-banner)))
     )
-  
-  (context 
+
+  (context
     "display-help!"
-    
+
     (it "should be defined"
         (should (fn? display-help!)))
     )

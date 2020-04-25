@@ -3,7 +3,7 @@
 ;;;; tammymakesthings - Static blog generator for tammymakesthings.com
 ;;;; File         : core.clj
 ;;;; Description  : Core functions and entrypoint for the site generator.
-;;;; Last Updated : Time-stamp: <2020-04-24 17:45:36 tammy>
+;;;; Last Updated : Time-stamp: <2020-04-25 19:36:03 tammy>
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; Based on the cryogen static site builder
 ;;;; (github - cryogen-project/cryogen)
@@ -18,7 +18,7 @@
 (ns tammymakesthings.core
   (:require [cryogen-core.compiler :refer [compile-assets-timed]]
             [clojure.java.io :as io]
-            [tammymakesthings.helpers :as helpers]
+            [tammymakesthings.cli :as cli]
             [tammymakesthings.generator :as gen]
             [debux.cs.core :as d :refer-macros [clog clogn dbg dbgn break]]
             [cryogen-core.plugins :refer [load-plugins]])
@@ -27,22 +27,10 @@
 (use 'debux.core)
 (use 'slugger.core)
 
-(defn dispatch-arg
-  "Dispatch based on the command provided as the first argv arg"
-  [command]
-  (cond
-    (= command "new-page") (gen/make-page!)
-    (= command "new-post") (gen/make-post!)
-    (= command "new-project") (gen/make-project!)
-    (= command "build") (gen/build-site!)
-    (= command "help") (helpers/display-help!)
-    (= command "version") (helpers/display-version!)
-    :else (helpers/display-help!)))
-
 (defn -main
   [& args]
   (load-plugins)
   (if (empty? args)
     (gen/build-site!)
-    (dispatch-arg (first args)))
+    (cli/dispatch-arg (first args)))
   (System/exit 0))
