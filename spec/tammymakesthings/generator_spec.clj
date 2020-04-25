@@ -5,7 +5,7 @@
 (describe 
   "tammymakesthings.generator"
           
-  (describe 
+  (context 
     "content-basedir"
     
     (it "should be defined"
@@ -15,7 +15,7 @@
         (should (= (content-basedir) "/home/tammy/blog")))
     )
   
-  (describe 
+  (context 
     "path-join"
     
     (it "should be defined"
@@ -37,7 +37,7 @@
                   "/home/tammy/foo/bar")))
     )
 
-  (describe 
+  (context 
     "title-to-slug"
     
     (it "should be defined"
@@ -61,7 +61,7 @@
         (should (= (title-to-slug "   This is a Test   ") "this-is-a-test")))
     )
 
-  (describe 
+  (context 
     "slug-or-title"
 
     (it "should be defined"
@@ -88,42 +88,117 @@
                    "default")))    
     )
 
-  (describe "path-for"
+  (context 
+    "path-for"
+    
     (it "should be defined"
-      (should (fn? path-for)))
+        (should (fn? path-for)))
+    
+    (it "should generate the right path given a kind and slug"
+        (should (= (path-for :post "test-post")
+                   "/home/tammy/blog/content/md/posts/test-post.md"))
+        (should (= (path-for :page "test-page")
+                   "/home/tammy/blog/content/md/pages/test-page.md")))
+
+    (it "should generate the right path given a kind, slug, and path-extra"
+        (should (= (path-for :post "projects" "test-post")
+                   "/home/tammy/blog/content/md/posts/projects/test-post.md"))
+        (should (= (path-for :page "projects" "test-page")
+                   "/home/tammy/blog/content/md/pages/projects/test-page.md")))
+
+    (it "should generate the right path with include-date?"
+        (let [date-stamp (str (.format (java.text.SimpleDateFormat. "yyyy-MM-dd") (new java.util.Date)))]
+          (should (= (path-for :post "" "test-post" true false)
+                     (str "/home/tammy/blog/content/md/posts/" date-stamp "-test-post.md")))
+          (should (= (path-for :page "" "test-post" true false)
+                     (str "/home/tammy/blog/content/md/pages/" date-stamp "-test-post.md")))
+          ))
+
+    (it "should generate the right path with include-date? and path-extra"
+        (let [date-stamp (str (.format (java.text.SimpleDateFormat. "yyyy-MM-dd") (new java.util.Date)))]
+          (should (= (path-for :post "extra" "test-post" true false)
+                     (str "/home/tammy/blog/content/md/posts/extra/" date-stamp "-test-post.md")))
+          (should (= (path-for :page "extra" "test-post" true false)
+                     (str "/home/tammy/blog/content/md/pages/extra/" date-stamp "-test-post.md")))
+          ))
+
+    (it "should generate the right path with make-subdir?"
+        (should (= (path-for :post "" "test-post" false true)
+                   "/home/tammy/blog/content/md/posts/test-post/test-post.md"))
+        (should (= (path-for :page "" "test-page" false true)
+                   "/home/tammy/blog/content/md/pages/test-page/test-page.md")))
+
+    (it "should generate the right path with make-subdir? and path-extra"
+        (should (= (path-for :post "extra" "test-post" false true)
+                   "/home/tammy/blog/content/md/posts/extra/test-post/test-post.md"))
+        (should (= (path-for :page "extra" "test-page" false true)
+                   "/home/tammy/blog/content/md/pages/extra/test-page/test-page.md")))
+
+    (it "should generate the right path with include-date? and make-subdir?"
+        (let [date-stamp (str (.format (java.text.SimpleDateFormat. "yyyy-MM-dd") (new java.util.Date)))]
+          (should (= (path-for :post "" "test-post" true true)
+                     (str "/home/tammy/blog/content/md/posts/test-post/" date-stamp "-test-post.md")))
+          (should (= (path-for :page "" "test-page" true true)
+                     (str "/home/tammy/blog/content/md/pages/test-page/" date-stamp "-test-page.md")))))
+
+    (it "should generate the right path with all options specified"
+        (let [date-stamp (str (.format (java.text.SimpleDateFormat. "yyyy-MM-dd") (new java.util.Date)))]
+          (should (= (path-for :post "extra" "test-post" true true)
+                     (str "/home/tammy/blog/content/md/posts/extra/test-post/" date-stamp "-test-post.md")))
+          (should (= (path-for :page "extra" "test-page" true true)
+                     (str "/home/tammy/blog/content/md/pages/extra/test-page/" date-stamp "-test-page.md")))))
+
+    (it "should destructure parameters from a map and make the right path"
+        (let [date-stamp (str (.format (java.text.SimpleDateFormat. "yyyy-MM-dd") (new java.util.Date)))
+             post-with-slug {:kind :post :path-extra "extra" :slug "test-post" 
+                              :include-date? true :make-subdir? true}
+             post-with-title {:kind :post :path-extra "extra" :title "Test Post" 
+                              :include-date? true :make-subdir? true}
+             page-with-slug {:kind :page :path-extra "extra" :slug "test-page" 
+                              :include-date? true :make-subdir? true}
+             page-with-title {:kind :page :path-extra "extra" :slug "test-page" 
+                              :include-date? true :make-subdir? true}]
+          (should (= (path-for post-with-slug)
+                     (str "/home/tammy/blog/content/md/posts/extra/test-post/" date-stamp "-test-post.md")))
+          (should (= (path-for post-with-title)
+                     (str "/home/tammy/blog/content/md/posts/extra/test-post/" date-stamp "-test-post.md")))
+          (should (= (path-for page-with-slug)
+                     (str "/home/tammy/blog/content/md/pages/extra/test-page/" date-stamp "-test-page.md")))
+          (should (= (path-for page-with-title)
+                     (str "/home/tammy/blog/content/md/pages/extra/test-page/" date-stamp "-test-page.md")))))
     )
 
-  (describe "maybe-make-tags-array"
+  (context "maybe-make-tags-array"
     (it "should be defined"
       (should (fn? maybe-make-tags-array)))
     )
 
-  (describe "make-empty-file-contents"
+  (context "make-empty-file-contents"
     (it "should be defined"
       (should (fn? make-empty-file-contents)))
     )
 
-  (describe "make-content-item!"
+  (context "make-content-item!"
     (it "should be defined"
       (should (fn? make-content-item!)))
     )
 
-  (describe "make-page!"
+  (context "make-page!"
     (it "should be defined"
       (should (fn? make-page!)))
     )
 
-  (describe "make-post!"
+  (context "make-post!"
     (it "should be defined"
       (should (fn? make-post!)))
     )
 
-  (describe "make-project!"
+  (context "make-project!"
     (it "should be defined"
       (should (fn? make-project!)))
     )
 
-  (describe "build-site!"
+  (context "build-site!"
     (it "should be defined"
       (should (fn? build-site!)))
   )

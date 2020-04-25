@@ -4,7 +4,7 @@
 
 (describe "tammymakesthings.core"
 
-  (describe "dispatch-arg"
+  (context "dispatch-arg"
     (it "should be defined"
         (should (fn? dispatch-arg)))
   )

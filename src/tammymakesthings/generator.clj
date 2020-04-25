@@ -3,7 +3,7 @@
 ;;;; tammymakesthings - Static blog generator for tammymakesthings.com
 ;;;; File         : generator.clj
 ;;;; Description  : Content generator (posts, pages, projects, etc)
-;;;; Last Updated : Time-stamp: <2020-04-24 17:45:05 tammy>
+;;;; Last Updated : Time-stamp: <2020-04-25 15:02:21 tammy>
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; Based on the cryogen static site builder
 ;;;; (github - cryogen-project/cryogen)
@@ -59,18 +59,15 @@
        default))
    ))
 
-(dbgn (defn path-for
+(defn path-for
   "Get the path for a content file."
 
-  ([content-def]
-     (path-for
-       (content-def :kind)
-       (content-def :path-extra)
-       (slug-or-title (str (content-def :slug))
-                      (str (content-def :title))
-                      "default-slug")
-       (content-def :include-date?)
-       (content-def :make-subdir?)))
+  ([{:keys [kind path-extra slug title include-date? make-subdir?] :as content-def}]
+   (path-for kind
+             path-extra
+             (slug-or-title slug title "default-slug")
+             include-date?
+             make-subdir?))
 
   ([kind slug]
    (path-for kind "" slug false false))
@@ -78,21 +75,17 @@
   ([kind path-extra slug]
    (path-for kind path-extra slug false false))
 
-  ([kind path-extra slug include-date make-subdir]
+  ([kind path-extra slug include-date? make-subdir?]
    (path-join
     (content-basedir)
      "content/md"
      (clojure.string/replace (str kind "s") ":" "")
-     (if (or (nil? path-extra) (= (count path-extra) 0))
-       ""
-       (str path-extra))
-     (if make-subdir
-       (str slug)
-       "")
-     (if include-date
+     (if (> (count path-extra) 0) (str path-extra) "")
+     (if make-subdir? (str slug) "")
+     (if include-date?
       (str (.format (java.text.SimpleDateFormat. "yyyy-MM-dd")
                     (new java.util.Date)) "-" slug ".md")
-      (str slug ".md"))))))
+      (str slug ".md")))))
 
 (defn maybe-make-tags-array
   "Convert an array of tags to a string (Markdown) representation."
