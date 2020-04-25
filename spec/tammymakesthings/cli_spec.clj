@@ -5,6 +5,11 @@
 (describe
   "tammymakesthings.cli"
 
+  (context "dispatch-arg"
+    (it "should be defined"
+        (should (fn? dispatch-arg)))
+  )
+
   (context
     "get-user-input"
 
