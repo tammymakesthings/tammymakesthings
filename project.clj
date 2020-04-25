@@ -26,7 +26,6 @@
   {
     :dev
     {
-      :speclj-eval-in :leiningen
       :dependencies
       [
         [speclj "3.3.0"]
@@ -40,7 +39,6 @@
     [speclj "3.3.0"]
   ]
 
-  :speclj-eval-in :leiningen
   :test-paths
   [
     "spec"
