@@ -23,8 +23,6 @@
             [cryogen-core.plugins :refer [load-plugins]])
   (:gen-class))
 
-(def app-version-string "1.0")
-
 (use 'debux.core)
 (use 'slugger.core)
 
@@ -51,7 +49,7 @@
   "Prompt the user for a yes or no input."
   [prompt]
   (let [input (get-user-input prompt "no")]
-    (clojure.string/starts-with? "y")))
+    (clojure.string/starts-with? input "y")))
 
 (defn make-post!
   "Prompts the user for necessary information and makes a new post."
@@ -62,6 +60,7 @@
        (println("Error: Title not specified!"))
        false)
      (gen/make-content-item! {:kind :post
+                                    :title title
                                     :slug (gen/title-to-slug title)
                                     :path-extra ""
                                     :make-subdir? make-subdir?
@@ -85,6 +84,7 @@
        false)
      (gen/make-content-item! {:kind :page
                                     :slug (gen/title-to-slug title)
+                                    :title title
                                     :path-extra ""
                                     :make-subdir? make-subdir?
                                     :include-date? true
@@ -107,6 +107,7 @@
        false)
      (gen/make-content-item! {:kind :page
                    :slug (gen/title-to-slug title)
+                                    :title title
                                     :path-extra "projects"
                                     :make-subdir? true
                                     :include-date? true
@@ -121,7 +122,7 @@
 (defn display-version!
   "Display a version message."
   []
-  (println (str("Cryogen CLI Version " app-version-string)))
+  (println "Cryogen CLI Version 0.2")
   (println "Adapted by Tammy Cravit, tammymakesthings@gmail.com"))
 
 (defn app-banner
@@ -144,8 +145,8 @@
   (println "    new-post       Create a new blog post under posts/")
   (println "    new-project    Create a new project under pages/projects/")
   (println "    build          Rebuild the site content")
-  (println "    help           Display this help message")
-  (println "    version        Display a version number")
+  (println "    tool-help      Display this help message")
+  (println "    tool-version   Display a version number")
   (println "")
   (println "If the command is omitted, \"build\" will be run.")
   )
@@ -153,12 +154,13 @@
 (defn dispatch-arg
   "Dispatch based on the command provided as the first argv arg"
   [command]
-  (app-banner)
+  (if (not= command "tool-version") (app-banner))
+
   (cond
     (= command "new-page") (make-page!)
     (= command "new-post") (make-post!)
     (= command "new-project") (make-project!)
     (= command "build") (gen/build-site!)
-    (= command "help") (display-help!)
-    (= command "version") (display-version!)
+    (= command "tool-help") (display-help!)
+    (= command "tool-version") (display-version!)
     :else (display-help!)))

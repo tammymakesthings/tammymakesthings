@@ -46,12 +46,12 @@
 
   :aliases
   {
-    { "new-page"     ["run" "-m" "tammymakesthings.core/main" "new-page"   ] }
-    { "new-post"     ["run" "-m" "tammymakesthings.core/main" "new-post"   ] }
-    { "new-project"  ["run" "-m" "tammymakesthings.core/main" "new-project"] }
-    { "build"        ["run" "-m" "tammymakesthings.core/main" "build"      ] }
-    { "tool-help"    ["run" "-m" "tammymakesthings.core/main" "help"       ] }
-    { "tool-version" ["run" "-m" "tammymakesthings.core/main" "version"    ] }
+    "new-page"     ["run" "-m" "tammymakesthings.core/main" "new-page"   ]
+    "new-post"     ["run" "-m" "tammymakesthings.core/main" "new-post"   ]
+    "new-project"  ["run" "-m" "tammymakesthings.core/main" "new-project"]
+    "build"        ["run" "-m" "tammymakesthings.core/main" "build"      ]
+    "tool-help"    ["run" "-m" "tammymakesthings.core/main" "help"       ]
+    "tool-version" ["run" "-m" "tammymakesthings.core/main" "version"    ]
   }
 
   :ring
