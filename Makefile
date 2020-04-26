@@ -19,12 +19,15 @@ default: help
 
 post:
 	@$(LEIN) run new-post
+	make edit
 
 page:
 	@$(LEIN) run new-page
+	make edit
 
 project:
 	@$(LEIN) run new-project
+	make edit
 
 edit: $(changed_files)
 	$(EDITOR) $(changed_files)
