@@ -5,61 +5,108 @@
 ##############################################################################
 
 LEIN="$(HOME)/bin/lein"
-@$(GIT)="/usr/bin/git"
+GIT="/usr/bin/git"
 
 SRC_FILES=$(wildcard src/tammymakesthings/*.clj)
 SPEC_FILES=$(wildcard spec/tammymakesthings/*.clj)
 CONFIG_FILES=project.clj content/config.edn
 CONTENT_FILES=$(shell find content/md -type f -print)
 
-post : ;
+changed_files=$(shell git status -s | grep 'content/md' | grep '.md' | cut -d' ' -f2)
+changed_all=$(shell git status -s | grep 'content/md' | grep '.md' | cut -d' ' -f2)
+
+default: help
+
+post:
 	@$(LEIN) run new-post
 
-page : ;
+page:
 	@$(LEIN) run new-page
 
-project : ;
+project:
 	@$(LEIN) run new-project
 
-build : ;
+edit: $(changed_files)
+	$(EDITOR) $(changed_files)
+
+zapnew: $(changed_files)
+	rm $(changed_files)
+
+changed: $(changed_files)
+	@if /bin/test "\"$(changed_files)\"" \!\= ""; \
+	then \
+		for file in $(changed_files); do \
+			echo -n \"$${file}\"; \
+			echo -n ' '; \
+		done; \
+	fi
+
+build:
 	@$(LEIN) run build
 
-version : ;
+version:
 	@$(LEIN) run tool-version
 
-@$(GIT)snap : $(CONTENT_FILES) ;
+gitadd:
+	@if /bin/test "\"$(changed_files)\"" \!\= ""; \
+	then \
+		for file in $(changed_files); do \
+			echo "* Adding $${file} to git repo"; \
+			$(GIT) add $${file}; \
+			$(GIT) commit -m "Added $${file} (from 'make add')"; \
+		done; \
+	fi
+	@if /bin/test "\"$(changed_files)\"" \!\= "\"$(changed_all)\""; \
+	then \
+		echo "* Adding additional content to git repo"; \
+		$(GIT) commit -a -m "Added additional content resources (from 'make add')"; \
+	fi
+
+gitsnap: $(CONTENT_FILES)
 	@$(GIT) add content
 	@$(GIT) commit -m "Snapshot commit at `date`"
 
-repl : $(SRC_FILES) $(SPEC_FILES) $(CONFIG_FILES) ;
+repl:
 	@$(LEIN) repl
 
-spec : $(SRC_FILES) $(SPEC_FILES) $(CONFIG_FILES) ;
+spec:
 	@$(LEIN) spec
 
-speca : $(SRC_FILES) $(SPEC_FILES) $(CONFIG_FILES) ;
+speca:
 	@$(LEIN) spec -a
 
-help : ;
+help:
 	@echo ""
-	@echo "******************************************************************************"
-	@echo "*    tammymakesthings.com cryogen helper v0.2 - tammymakesthings@gmail.com   *"
-	@echo "******************************************************************************"
+	@echo "\e[35m\e[1m******************************************************************************\e[0m"
+	@echo "\e[35m\e[1m*    tammymakesthings.com cryogen helper v0.2 - tammymakesthings@gmail.com   *\e[0m"
+	@echo "\e[35m\e[1m******************************************************************************\e[0m"
 	@echo ""
-	@echo "Makefile commands:"
+	@echo "\e[36m\e[4mContent Generation:\e[0m"
 	@echo ""
-	@echo "    make post     Create a new post in content/md/posts"
-	@echo "    make page     Create a new page in content/md/pages"
-	@echo "    make project  Create a new project in content/md/pages/projects"
-	@echo "    make build    Rebuild the static site from the cryogen tree"
-	@echo "    make version  Display the tool version string."
-	@echo "    make gitsnap  Take a git snapshot commit of the content repo"
+	@echo "    make \e[1mpost\e[0m     Create a new post in \e[94mcontent/md/posts\e[0m"
+	@echo "    make \e[1mpage\e[0m     Create a new page in \e[94mcontent/md/pages\e[0m"
+	@echo "    make \e[1mproject\e[0m  Create a new project in \e[94mcontent/md/pages/projects\e[0m"
 	@echo ""
-	@echo "Development targets:"
+	@echo "\e[36m\e[4mContent Management:\e[0m"
 	@echo ""
-	@echo "    make repl     Launch the leiningen REPL"
-	@echo "    make spec     Run the speclj test suite once"
-	@echo "    make speca    Run the speclj test watcher"
+	@echo "    make \e[1medit\e[0m     Open new content files with \e[92m$(shell basename $(EDITOR))\e[0m"
+	@echo "    make \e[1mzapnew\e[0m   Delete new posts/pages/projects from \[e94mmcontent/\e[0m"
+	@echo "    make \e[1mchanged\e[0m  Print paths of new content from \[e94mmcontent/\e[0m"
+	@echo "    make \e[1mbuild\e[0m    Rebuild the static site from the cryogen tree"
+	@echo "    make \e[1mgitadd\e[0m   Add new content in content/md to the repo"
+	@echo "    make \e[1mgitsnap\e[0m  Take a git snapshot commit of the content tree"
 	@echo ""
+	@echo "\e[33m\e[4mOther Targets:\e[0m"
+	@echo ""
+	@echo "    make \e[1mversion\e[0m  Display the tool version string."
+	@echo ""
+	@echo "\e[32m\e[4mDevelopment targets:\e[0m"
+	@echo ""
+	@echo "    make \e[1mrepl\e[0m     Launch the leiningen REPL"
+	@echo "    make \e[1mspec\e[0m     Run the speclj test suite once"
+	@echo "    make \e[1mspeca\e[0m    Run the speclj test watcher"
+	@echo ""
+
+.PHONY: post page project build version gitsnap repl spec speca
 
 
