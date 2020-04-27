@@ -84,9 +84,9 @@ clean:
 
 help:
 	@echo ""
-	@echo "\e[35m\e[1m******************************************************************************\e[0m"
-	@echo "\e[35m\e[1m*    tammymakesthings.com cryogen helper v0.2 - tammymakesthings@gmail.com   *\e[0m"
-	@echo "\e[35m\e[1m******************************************************************************\e[0m"
+	@echo "\e[31m\e[1m******************************************************************************\e[0m"
+	@echo "\e[31m\e[1m*    tammymakesthings.com cryogen helper v0.2 - tammymakesthings@gmail.com   *\e[0m"
+	@echo "\e[31m\e[1m******************************************************************************\e[0m"
 	@echo ""
 	@echo "\e[36m\e[4mContent Generation:\e[0m"
 	@echo ""
@@ -94,7 +94,7 @@ help:
 	@echo "    make \e[1mpage\e[0m     Create a new page in \e[92mcontent/md/pages\e[0m"
 	@echo "    make \e[1mproject\e[0m  Create a new project in \e[92mcontent/md/pages/projects\e[0m"
 	@echo ""
-	@echo "\e[34m\e[4mContent Management:\e[0m"
+	@echo "\e[35m\e[4mContent Management:\e[0m"
 	@echo ""
 	@echo "    make \e[1medit\e[0m     Open new content files with \e[92m$(shell basename $(EDITOR))\e[0m"
 	@echo "    make \e[1mzapnew\e[0m   Delete new posts/pages/projects from \e[92mcontent/md/\e[0m"
