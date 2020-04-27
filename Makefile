@@ -110,7 +110,7 @@ help:
 	@echo ""
 	@echo "\e[32m\e[4mDevelopment targets:\e[0m"
 	@echo ""
-	@echo "    make \e[1mrepl\e[0m     Launch the \e[94mleiningen\e[0m REPL"
+	@echo "    make \e[1mrepl\e[0m     Run the \e[94mleiningen\e[0m REPL"
 	@echo "    make \e[1mspec\e[0m     Run the \e[94mspeclj\e[0m test suite once"
 	@echo "    make \e[1mspeca\e[0m    Run the \e[94mspeclj\e[0m test watcher"
 	@echo ""
