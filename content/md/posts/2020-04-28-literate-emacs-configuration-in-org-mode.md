@@ -130,7 +130,7 @@ order:
   ```
 
 - **The emacs mode-line and header block.** This block will be copied verbatim
-  into the top of your `init.el`. It's jobs are tomake sure Emacs reads
+  into the top of your `init.el`. Its jobs are to make sure Emacs reads
   the `init.el` file properly and will remind people (ok, it'll remind you) to
   make edits to `init.org` and not to `init.el`.
   
@@ -161,25 +161,25 @@ order:
   
   ```
   #+begin_src emacs-lisp
-  ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-  ;; Automatically tangle init.org on save to produce init.el
-  ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+    ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+    ;; Automatically tangle init.org on save to produce init.el
+    ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-  (defvar user/init-org-file (concat user-emacs-directory "init.org"))
-  (defvar user/init-el-file  (concat user-emacs-directory "init.el"))
+    (defvar user/init-org-file (concat user-emacs-directory "init.org"))
+    (defvar user/init-el-file  (concat user-emacs-directory "init.el"))
 
-  (defun tangle-init ()
-    "If the current buffer is 'init.org' the code-blocks are
-  tangled, and the tangled file is compiled."
-    (when (equal (buffer-file-name)
-                 (expand-file-name user/init-org-file ))
-      ;; Avoid running hooks when tangling.
-      (let ((prog-mode-hook nil))
-        (org-babel-tangle)
-        (byte-compile-file user/init-el-file))))
-
-  (add-hook 'after-save-hook 'tangle-init)
-#+end_src
+    (defun tangle-init ()
+      "If the current buffer is 'init.org' the code-blocks are
+    tangled, and the tangled file is compiled."
+      (when (equal (buffer-file-name)
+                   (expand-file-name user/init-org-file ))
+        ;; Avoid running hooks when tangling.
+        (let ((prog-mode-hook nil))
+          (org-babel-tangle)
+          (byte-compile-file user/init-el-file))))
+ 
+    (add-hook 'after-save-hook 'tangle-init)
+  #+end_src
   ```
 
 - **The rest of your Emacs configuration.** I like to structure this part of
@@ -244,41 +244,41 @@ include `:tangle filename.el` at the end of a `#+begin_src` line. So in my
 `init.org`, I have code like the following:
 
   ```
-  *** Load OS-specific files
+    *** Load OS-specific files
 
-  This defines a system-specific file by OS type (Windows, Mac, etc.) so
-  specific settings can be overridden.
+    This defines a system-specific file by OS type (Windows, Mac, etc.) so
+    specific settings can be overridden.
 
-  #+begin_src emacs-lisp
-  (let ((system-file (concat user-emacs-directory 
-                             "settings-os-" (subst-char-in-string ?/ ?- 
-                                            (symbol-name system-type)) ".el")))
-      (if (file-exists-p system-file)
-        (load-file system-file)))
-  #+end_src
+    #+begin_src emacs-lisp
+    (let ((system-file (concat user-emacs-directory 
+                               "settings-os-" (subst-char-in-string ?/ ?- 
+                                              (symbol-name system-type)) ".el")))
+        (if (file-exists-p system-file)
+          (load-file system-file)))
+    #+end_src
 
-  ***** System-Specific FIle - Linux
+    ***** System-Specific FIle - Linux
 
-  #+begin_src emacs-lisp :tangle settings-os-gnu-linux.el
-    ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-    ;; OS-specific settings - Linux
-    ;; Tangled from init.org - do not modify directly
-    ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+    #+begin_src emacs-lisp :tangle settings-os-gnu-linux.el
+      ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+      ;; OS-specific settings - Linux
+      ;; Tangled from init.org - do not modify directly
+      ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-    (do-some-customization)
-    (provide 'settings-os-gnu-linux)
-  #+end_src
+      (do-some-customization)
+      (provide 'settings-os-gnu-linux)
+    #+end_src
 
-  ***** System-Specific File - Windows
+    ***** System-Specific File - Windows
 
-  #+begin_src emacs-lisp :tangle settings-os-windows-nt.el
-    ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-    ;; OS-specific settings - Windows
-    ;; Tangled from init.org - do not modify directly
-    ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+    #+begin_src emacs-lisp :tangle settings-os-windows-nt.el
+      ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+      ;; OS-specific settings - Windows
+      ;; Tangled from init.org - do not modify directly
+      ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-    (provide 'settings-os-windows-nt)
-  #+end_src
+      (provide 'settings-os-windows-nt)
+    #+end_src
   ```
 
 If you have some code in your `init.org` that you want to keep but that you
@@ -287,10 +287,10 @@ temporarily disable a customization but you don't want to throw it away), you
 can write this:
 
   ```
-  #+begin_src emacs-lisp :tangle no
-  ;; This code will not get written to your init.el file.
-  (do-stuff)
-  #end_src
+    #+begin_src emacs-lisp :tangle no
+    ;; This code will not get written to your init.el file.
+    (do-stuff)
+    #end_src
   ```
   
 So there you have it! I know there's some initial overhead in getting this set
