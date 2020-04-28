@@ -48,6 +48,8 @@ changed: $(changed_files)
 build:
 	@$(LEIN) run build
 
+publish: build
+
 version:
 	@$(LEIN) run tool-version
 
@@ -100,6 +102,7 @@ help:
 	@echo "    make \e[1mzapnew\e[0m   Delete new posts/pages/projects from \e[92mcontent/md/\e[0m"
 	@echo "    make \e[1mchanged\e[0m  Print paths of new content from \e[92mcontent/md/\e[0m"
 	@echo "    make \e[1mbuild\e[0m    Rebuild the static site from the cryogen tree"
+	@echo "                  (\e[1mmake publish\e[0m is a synonym for \e[1mmake build \e[0m)"
 	@echo "    make \e[1mclean\e[0m    Erase the Website deployment tree \e[92m$(DEPLOY_DIR)\e[0m"
 	@echo "    make \e[1mgitadd\e[0m   Add new content in \e[92mcontent/md/\e[0m to the repo"
 	@echo "    make \e[1mgitsnap\e[0m  Take a git snapshot commit of the content tree"
@@ -115,6 +118,6 @@ help:
 	@echo "    make \e[1mspeca\e[0m    Run the \e[94mspeclj\e[0m test watcher"
 	@echo ""
 
-.PHONY: post page project build version gitsnap repl spec speca zapnew channged edit clean
+.PHONY: post page project build version gitsnap repl spec speca zapnew channged edit clean build
 
 
