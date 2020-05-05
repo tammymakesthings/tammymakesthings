@@ -17,21 +17,25 @@
     <body>
         <aside id="sidebar">
             <div id="logo">
-                <a title="{{title}}" href="{{index-uri}}">
-                    <img class="icon" src="{{blog-prefix}}img/minifig_tlc.png">
-                    <div class="text desktop-and-tablet-only">{{title}}</div>
-                    <div class="text mobile-only">{{title}}</div>
+                <div id="logomain">
+                    <a title="{{title}}" href="{{index-uri}}">
+                        <img class="icon" src="{{blog-prefix}}img/minifig_tlc.png">
+                        <div class="text desktop-and-tablet-only">{{title}}</div>
+                        <div class="text mobile-only">{{title}}</div>
+                    </a>
                 </a>
-                <div style="font-size: small; color: #e0e0e0; text-align: center; margin-top: 20px; margin-bottom: 20px; border-top: 1px dotted #f0f0f0; border-bottom: 1px dotted #f0f0f0; padding-top: 4px; padding-bottom: 4px">
+                <div id="logosub">
                     hardware hacking, software,<br/>
                     writing, tech, productivity, miscellany
                 </div>
-                <p style="padding-top: 20px;">
-                  <a title="linkedin" href="https://www.linkedin.com/in/tammycravit" rel="external"><img src="{{blog-prefix}}img/logo-linkedin.png" /></a>&nbsp;
-                  <a title="twitter" href="https://www.twitter.com/maker_tammy" rel="external"><img src="{{blog-prefix}}img/logo-twitter.png" /></a>&nbsp;
-                  <a title="github" href="https://www.github.com/tammymakesthings" rel="external"><img src="{{blog-prefix}}img/logo-github.png" /></a>&nbsp;
-                  <a title="RSS feed" href="{{rss-uri}}"><img src="{{blog-prefix}}img/logo-rss.png" /></a>
-                </p>
+                <div id="sociallogos">
+                    <ul>
+                        <li><a title="linkedin" href="https://www.linkedin.com/in/tammycravit" rel="external"><img src="{{blog-prefix}}img/logo-linkedin.png" /></a></li>
+                        <li><a title="twitter" href="https://www.twitter.com/maker_tammy" rel="external"><img src="{{blog-prefix}}img/logo-twitter.png" /></a></li>
+                        <li><a title="github" href="https://www.github.com/tammymakesthings" rel="external"><img src="{{blog-prefix}}img/logo-github.png" /></a></li>
+                        <li><a title="RSS feed" href="{{rss-uri}}"><img src="{{blog-prefix}}img/logo-rss.png" /></a></li>
+                    </ul>
+                </div>
             </div>
 
             <nav id="sidebar-links">
