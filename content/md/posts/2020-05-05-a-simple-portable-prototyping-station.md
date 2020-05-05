@@ -132,7 +132,7 @@ with.
 - **Battery Holder**. I used
   [this one](https://www.adafruit.com/product/3287), which also required a
   [JST breadboard adapter](https://www.adafruit.com/product/1862).
-- **Double-sided tape]**. I used
+- **Double-sided tape**. I used
   [Scotch foam mounting tape](https://www.amazon.com/gp/product/B003W0R4PE/)
   and stacked up multiple layers of tape as needed to make everything fit.
 
