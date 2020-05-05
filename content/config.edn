@@ -14,12 +14,12 @@
  :sass-src                     []
  :sass-path                    "sass"
  :theme                        "tammycravit"
- :resources                    ["img"]
+ :resources                    ["img" "code"]
  :keep-files                   [".git"]
  :disqus?                      true
  :disqus-shortname             "tammy-makes-things"
  :ignored-files                [#"\.#.*" #".*\.swp$"]
- :previews?                    false
+ :previews?                    true
  :posts-per-page               5
  :blocks-per-preview           2
  :clean-urls                   :trailing-slash
