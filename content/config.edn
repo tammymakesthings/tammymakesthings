@@ -13,7 +13,7 @@
  :archive-group-format         "yyyy MMMM"
  :sass-src                     []
  :sass-path                    "sass"
- :theme                        "tammycravit"
+ :theme                        "tammymakesthings"
  :resources                    ["img" "code"]
  :keep-files                   [".git"]
  :disqus?                      true
