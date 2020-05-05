@@ -17,6 +17,9 @@ want to learn to use the cool tools in my local Makerspace:
 [CNC router](https://en.wikipedia.org/wiki/CNC_router). What else might be
 included? We’ll find out as we journey together.
 
+Since I'm starting afresh, I thought I'd talk about my journey as a maker,
+and what brought us together in this little corner of cyberspace.
+
 My history with making things is long and complicated. It’s ironic, in a way,
 because making stuff is something that runs in my family. Some of my earliest
 childhood comfort memories are tied to the smell of sawdust and my

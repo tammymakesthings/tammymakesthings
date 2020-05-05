@@ -21,7 +21,7 @@ getting *org-mode* set up for both organizing my life and for some writing
 projects. I'll be blogging more about that, but that's not what I want
 to talk about today. Today my thoughts are about the tools we use ---
 hardware, software, and otherwise --- and about tool wars.
-
+a
 When I was in college (more years ago than I care to admit) Linux was in
 its infancy. Home computers were just starting to join the Internet, and
 a lot of us that used [Unix](https://en.wikipedia.org/wiki/Unix)-based

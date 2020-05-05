@@ -13,7 +13,7 @@ becomes hard to manage.
 
 Enter [org-mode](https://orgmode.org/). Originally begun as an outlining tool,
 `org-mode` has acquired a ton of additional functionality, including the
-capability for 
+capability for
 [literate programming](https://https://en.wikipedia.org/wiki/Literate_programming).
 In a nutshell, literate programming allows you to combine code and
 documentation into a single file. With `emacs` and `org-mode`, you can combine
@@ -22,9 +22,9 @@ snippets of code and documentation into a single `.org` file, and then
 produce the code which `emacs` actually runs and documentation (in HTML,
 [LaTeX](https://www.latex-project.org), or other formats).
 
-You can see my `emacs` configuration 
+You can see my `emacs` configuration
 [on github](https://github.com/tammymakesthings/emacs_d). My emacs
-configuration is located in the file 
+configuration is located in the file
 [init.org](https://github.com/tammymakesthings/emacs_d/blob/master/init.org).
 You can look at that file if you want details, but what I'd like to show you
 here is a step-by-step guide to creating your own `emacs` configuration with
@@ -34,19 +34,19 @@ modified.
 Ready? Let's go!
 
 1. Install Emacs. Instructions for various platforms are
-   [here](https://www.gnu.org/software/emacs/manual/html_node/efaq/Installing-Emacs.html). 
+   [here](https://www.gnu.org/software/emacs/manual/html_node/efaq/Installing-Emacs.html).
    As of 04/2020, you should install Emacs 26. A version of org-mode is
    bundled with Emacs, so no installation is needed there.
-   
+
 2. If you have an existing `.emacs.d` directory, rename it and create an empty
    one. This directory should live in your home directory (on Linux and MacOS
-   X systems). On Windows systems, consult 
+   X systems). On Windows systems, consult
    [this guide](https://www.gnu.org/software/emacs/manual/html_node/efaq-w32/Location-of-init-file.html)
    to work out where your home directory lives.
-   
+
 3. Inside the `.emacs.d` directory, create a file named `init.el`. Paste in
    the following code to that file:
-   
+
    ```lisp
    ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
    ;; This file replaces itself with the actual configuration at first run.
@@ -63,7 +63,7 @@ Ready? Let's go!
    (load-file user/init-el-file)
    (byte-compile-file user/init-el-file)
    ```
-   
+
    This "seed" init file will cause `emacs` to load the `init.org` file,
    "tangle" it to produce a new `init.el` and byte-compile the new `init.el`
    file for faster execution.
@@ -76,38 +76,38 @@ Ready? Let's go!
    Emacs Lisp code blocks, which will be extracted into the `init.el` file
    when your `init.org` is tangled. Each code block should begin with a line
    like this:
-   
+
    ```
    #+begin_src emacs-lisp
-   ``` 
-   
+   ```
+
    And end with a line like this:
-   
+
    ```
    #+end_src
    ```
-   
-   These markers tell Emacs and `org-mode` how to extract the code. 
+
+   These markers tell Emacs and `org-mode` how to extract the code.
    I'll talk about what should go into this file in a moment.
 
 5. Copy `init.el` to `init.el.firstrun`. This step is optional, but since
    tangling the org file overwrites the seed `init.el` I like to keep a copy
-   around. 
-   
+   around.
+
 6. Check your `.emacs.d` into source code control. If you're using `git`,
    you'll want to do something like this after you've created your repo and
    checked in your `init.org` and `init.el` files, since the contents of
    `init.el` are automatically overwritten:
-   
+
    `git update-index --assume-unchanged init.el`
-   
+
 7. Once you've created your `init.org` file, launch Emacs. Emacs will read
    your `init.org`, tangle it and create a new `init.el` (replacing the seed
    created in step 3), compile it to `init.elc` and then load it.
-   
+
 8. After this initial compliation, I find it's a good idea to exit and restart
    emacs.
-   
+
 So, what goes in your `init.org` file? I like to start with the following, in
 order:
 
@@ -115,7 +115,7 @@ order:
   what kind of file it is, and includes some `org-mode` options useful if you
   decide to typeset your configuration with LaTeX. The first few lines of my
   `init.org` look like this:
-  
+
   ```
   -*- mode: org; fill-column: 78; -*-
   #+TITLE: Emacs configuration file
@@ -126,14 +126,14 @@ order:
   #+LATEX_HEADER: \usepackage{inconsolata}
   #+LATEX_HEADER: \usepackage[utf8]{inputenc}
   #+PROPERTY: header-args :tangle init.el
-  
+
   ```
 
 - **The emacs mode-line and header block.** This block will be copied verbatim
   into the top of your `init.el`. Its jobs are to make sure Emacs reads
   the `init.el` file properly and will remind people (ok, it'll remind you) to
   make edits to `init.org` and not to `init.el`.
-  
+
   ```
   #+begin_src emacs-lisp
   -*- mode: org; fill-column: 78; -*-
@@ -146,19 +146,19 @@ order:
   #+LATEX_HEADER: \usepackage[utf8]{inputenc}
   #+PROPERTY: header-args :tangle init.el
   #+end_src
-  
+
   ```
-  
+
   If you *do* plan on using LaTeX to typeset your documentation, you should
   also install the
   [Inconsolata](https://fonts.google.com/specimen/Inconsolata) font.
-  
-- **The auto-tangling code.** This bit of 
+
+- **The auto-tangling code.** This bit of
   [Emacs lisp](https://www.gnu.org/software/emacs/manual/html_node/elisp/)
   magic -- which is included into your `init.el` file and thereby automatically
   loaded -- tells Emacs to automatically tangle `init.org` and produce a new
   `init.el` file every time the `init.org` file is saved.
-  
+
   ```
   #+begin_src emacs-lisp
     ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -177,7 +177,7 @@ order:
         (let ((prog-mode-hook nil))
           (org-babel-tangle)
           (byte-compile-file user/init-el-file))))
- 
+
     (add-hook 'after-save-hook 'tangle-init)
   #+end_src
   ```
@@ -187,10 +187,10 @@ order:
   descriptions of each customization or group of customizations in with the
   code blocks. Here's an example of a bit of the UI customization from my
   `init.org`:
-  
+
   ```
   *** UI Customizations
-  
+
   Show the full path in the title bar.
 
   #+begin_src emacs-lisp
@@ -202,7 +202,7 @@ order:
   #+begin_src emacs-lisp
     (global-set-key (kbd "s-t") '(lambda () (interactive)))
   #+end_src
-  
+
   ***** Frame Size/Position
 
   Set the initial window size and position if we're running in a GUI. If
@@ -215,7 +215,7 @@ order:
       (if (eq tlc/number-of-displays 1)
           ;; One monitor - make the window shorter and mazimize it
           (setq initial-frame-alist '((top . 5) (left . 5) (width . 132)
-                                      (height . 28) 
+                                      (height . 28)
                                       (fullscreen . maximized)))
         ;; Multiple monitors - taller window, not maximized
         (setq initial-frame-alist '((top . 15) (left . 15)
@@ -223,7 +223,7 @@ order:
       (setq default-frame-alist initial-frame-alist)))
   #+end_src
   ```
-  
+
 As you can see, the code and documentation can be fluidly and easily mixed,
 and documented code listings can be easily produced. This is the primary
 payoff of going to all this trouble.
@@ -250,8 +250,8 @@ include `:tangle filename.el` at the end of a `#+begin_src` line. So in my
     specific settings can be overridden.
 
     #+begin_src emacs-lisp
-    (let ((system-file (concat user-emacs-directory 
-                               "settings-os-" (subst-char-in-string ?/ ?- 
+    (let ((system-file (concat user-emacs-directory
+                               "settings-os-" (subst-char-in-string ?/ ?-
                                               (symbol-name system-type)) ".el")))
         (if (file-exists-p system-file)
           (load-file system-file)))
@@ -292,12 +292,12 @@ can write this:
     (do-stuff)
     #end_src
   ```
-  
+
 So there you have it! I know there's some initial overhead in getting this set
 up, but I find that being able to comprehensively document my code (with
 formatting and hyperlinks and stuff) makes it MUCH easier to understand
 later. And this capability isn't limited to just your Emacs configuration -
 you can write code in many languages and tangle out your source files and
-documentation automatically! The org-mode 
+documentation automatically! The org-mode
 [manual](https://orgmode.org/manual/Working-with-Source-Code.html#Working-with-Source-Code)
 has lots more information about how this works.

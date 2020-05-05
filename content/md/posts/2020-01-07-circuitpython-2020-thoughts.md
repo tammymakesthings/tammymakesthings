@@ -10,7 +10,7 @@ Over on the [Adafruit blog](https://blog.adafruit.com/2020/01/01/what-do-you-wan
 they asked "what do you want from [CircuitPython](https://circuitpython.org/)
 in 2020. For those that aren't familiar with it, CircuitPython is a project to
 allow programming of embedded microcontrollers in Python. It's pretty much
-wonderful, and I've been using it for almost all of my hardwre hacking of
+wonderful, and I've been using it for almost all of my hardware hacking of
 late.
 
 So here in no particular order are my thoughts for _#CircuitPython2020_.

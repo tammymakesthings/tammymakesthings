@@ -6,7 +6,9 @@
 
 On [twitter](https://twitter.com/maker_tammy/status/1240781242745806851)
 recently, I posted some photos of a little portable prototyping station I
-threw together. [Henry Moore](https://twitter.com/HenryMoore_1) asked for
+threw together.
+
+[Henry Moore](https://twitter.com/HenryMoore_1) asked for
 some details and a parts list, so I thought I'd throw together a quick blog
 post about it.
 
@@ -40,7 +42,7 @@ parts list below). I could have easily designed something custom fit and 3-D
 printed it, but I was going for speed here and my Fusion 360 and OpenSCAD
 skills would have made that take longer than I'd have liked.
 
-#### Microcontroller
+### Microcontroller
 
 ![ProtoStation - Microcontroller](https://tammymakesthings.com/img/protostation/protostation_metrom4.jpg)
 
@@ -52,7 +54,7 @@ most all of the things I want to prototype. Like everything else on the
 prototyping station, it's held on with foam double-sided tape, so I can
 easily swap it out for something else if I want to later.
 
-#### Power Distribution 
+### Power Distribution
 
 ![ProtoStation - Power distribution block](https://tammymakesthings.com/img/protostation/protostation_pwrdist.jpg)
 
@@ -71,7 +73,7 @@ buses, depending on what I'm working on and what's available. (If I'm not
 connected to USB, the Metro M4 and the I2C interface aren't providing power,
 obviously.)
 
-#### I2C/SPI Interface
+### I2C/SPI Interface
 
 ![ProtoStation - I2C/SPI Interface](https://tammymakesthings.com/img/protostation/protostation_ft232.jpg)
 
@@ -82,7 +84,7 @@ here because it was what I had handy, but an
 device would work here too. Again, I jumpered the power outputs of this over
 to the power distribution block so I could use them if wanted.
 
-#### Prototyping Area
+### Prototyping Area
 
 ![ProtoStation - Prototyping area](https://tammymakesthings.com/img/protostation/protostation_proto.jpg)
 
