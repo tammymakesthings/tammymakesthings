@@ -1,5 +1,9 @@
 @import "variables";
 
+@import url('https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,400;0,500;0,700;1,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Righteous&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fira+Mono:wght@400;500;700&display=swap');
+
 body {
   font-family: $default-font-family;
   font-size: $default-font-size;
@@ -26,8 +30,6 @@ body, caption, th, td, input, textarea, select, option, legend, fieldset, h1, h2
   }
 }
 
-
-
 p {
   padding-top: 0;
   margin: 0 auto 1em auto;
@@ -46,12 +48,12 @@ h1 {
   margin-bottom: 0.22916667em; /* (22px / 48px) * .5 */
   font-weight: $font-weight-header;
   font-family: $wide-font-family;
-  font-size: 3em;
+  font-size: 2.5em;
   line-height: 1.05;
   letter-spacing: -.01em;
 
   @media (max-width: $tablet-breakpoint) {
-    font-size: 2.5em;
+    font-size: 2.1em;
     line-height: 1.05;
     margin-top: 0.73333334em;  /* (22px / 45px) * 1.5 */
     margin-bottom: 0.24444445em; /* (22px / 45px) * .5 */
