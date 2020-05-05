@@ -1,7 +1,6 @@
 {
   :title  "The Journey Begins"
   :layout :post
-  :author "Tammy"
   :tags   ["misc"]
   :draft? false
 }

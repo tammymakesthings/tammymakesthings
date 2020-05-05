@@ -1,7 +1,6 @@
 {
   :title  "Thoughts on CircuitPython for 2020"
   :layout :post
-  :author "Tammy"
   :tags   ["circuitpython"]
   :draft? false
 }

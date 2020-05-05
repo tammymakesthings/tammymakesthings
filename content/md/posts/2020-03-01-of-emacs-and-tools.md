@@ -1,7 +1,6 @@
 {
   :title  "Of Emacs and Tools"
   :layout :post
-  :author "Tammy"
   :tags   ["emacs" "tooling"]
   :draft? false
 }

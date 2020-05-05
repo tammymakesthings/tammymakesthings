@@ -1,7 +1,6 @@
 {
   :title  "Hello, and Pardon the Dust"
   :layout :post
-  :author "Tammy"
   :tags   ["misc"]
   :draft? false
 }

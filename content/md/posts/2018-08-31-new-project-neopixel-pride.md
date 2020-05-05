@@ -1,7 +1,6 @@
 {
   :title  "New Project - fw_neopixel_pride"
   :layout :post
-  :author "Tammy"
   :tags   ["projects" "circuitpython" "neopixel" "wearables"]
   :draft? false
 }
