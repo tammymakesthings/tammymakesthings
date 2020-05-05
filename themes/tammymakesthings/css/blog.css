@@ -46,11 +46,13 @@ h1 {
   margin-bottom: 0.22916667em;
   /* (22px / 48px) * .5 */
   font-weight: 700;
+  color: #522158;
   font-family: Righteous, Montserrat, sans-serif;
   font-size: 2.5em;
   line-height: 1.05;
   letter-spacing: -0.01em;
   font-variant: small-caps;
+  border-bottom: 1px dotted #522158;
 }
 @media (max-width: 900px) {
   h1 {
@@ -84,9 +86,10 @@ h2 {
   /* (22px / 32px) * .5 */
   font-weight: 700;
   font-family: Righteous, Montserrat, sans-serif;
+  color: #522158;
   letter-spacing: -0.01em;
   font-variant: small-caps;
-  font-size: 2em;
+  font-size: 1.8em;
   line-height: 1.25;
 }
 @media (max-width: 900px) {
@@ -499,10 +502,10 @@ div#logo div#logomain {
   margin-top: 15px;
   margin-bottom: 10px;
 }
-div#logo div#logomain a div {
-  font-size: 2.7em;
+div#logo div#logomain a div:first-child {
+  font-size: 3.3em;
   font-weight: bold;
-  line-height: 3.1em;
+  line-height: 3.6em;
 }
 div#logo div#logosub {
   font-size: 11pt;
