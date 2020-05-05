@@ -29,7 +29,7 @@ My goals for designing this little prototyping station were:
 
 With that in mind, here's what I came up with:
 
-![ProtoStation Overview](https://tammymakesthings.com/img/protostation_overview.jpg)
+![ProtoStation - Hardware overview](https://tammymakesthings.com/img/protostation/protostation_overview.jpg)
 
 Pretty handy, huh? Let's talk a bit about what's onboard.
 
@@ -40,6 +40,10 @@ parts list below). I could have easily designed something custom fit and 3-D
 printed it, but I was going for speed here and my Fusion 360 and OpenSCAD
 skills would have made that take longer than I'd have liked.
 
+#### Microcontroller
+
+![ProtoStation - Microcontroller](https://tammymakesthings.com/img/protostation/protostation_metrom4.jpg)
+
 In the upper left area is a microcontroller, since I do lots of stuff with
 microcontrollers. (Really, who doesn't, anymore?) I threw an
 [Adafruit Metro M4 Express](https://learn.adafruit.com/adafruit-metro-m4-express-featuring-atsamd51)
@@ -47,6 +51,10 @@ into this spot because I had it handy and it's powerful enough to handle
 most all of the things I want to prototype. Like everything else on the
 prototyping station, it's held on with foam double-sided tape, so I can
 easily swap it out for something else if I want to later.
+
+#### Power Distribution 
+
+![ProtoStation - Power distribution block](https://tammymakesthings.com/img/protostation/protostation_pwrdist.jpg)
 
 The next area of the board is my power distribution block. I had a tiny
 little breadboard lying around, so I ran a bunch of stuff over to it:
@@ -63,6 +71,10 @@ buses, depending on what I'm working on and what's available. (If I'm not
 connected to USB, the Metro M4 and the I2C interface aren't providing power,
 obviously.)
 
+#### I2C/SPI Interface
+
+![ProtoStation - I2C/SPI Interface](https://tammymakesthings.com/img/protostation/protostation_ft232.jpg)
+
 Next up is my I2C/SPI interface, so I can test sensor-based stuff and whatnot
 easily. I used an [Adafruit FT232H](https://www.adafruit.com/product/2264)
 here because it was what I had handy, but an
@@ -70,8 +82,16 @@ here because it was what I had handy, but an
 device would work here too. Again, I jumpered the power outputs of this over
 to the power distribution block so I could use them if wanted.
 
+#### Prototyping Area
+
+![ProtoStation - Prototyping area](https://tammymakesthings.com/img/protostation/protostation_proto.jpg)
+
 And lastly, the breadboards for prototyping space. Again, I used what I had
-handy.
+handy. To simplify the connections between the prototyping area and the
+power distribution block, I've jumpered the positive and negative rails at
+the top of the breadboards together. I've left the bottom rails un-jumpered
+and unconnected to the top ones, because sometimes I run the I2C signals
+(`SDA` and `SCL`) or SPI signals (`MISO` and `MOSI`) along here.
 
 ## Ideas For the Future
 
