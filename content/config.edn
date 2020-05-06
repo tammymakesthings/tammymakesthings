@@ -1,4 +1,5 @@
-{:site-title                   "tammy makes things"
+{
+ :site-title                   "tammy makes things"
  :author                       "Tammy Cravit"
  :description                  "hardware hacking, software, writing, tech, productivity, miscellany"
  :site-url                     "https://tammymakesthings.com"
@@ -25,8 +26,27 @@
  :clean-urls                   :trailing-slash
  :collapse-subdirs?            false
  :hide-future-posts?           true
- :klipse {:settings {:selector ".klipse-cljs"
-                     :selector-reagent ".klipse-reagent"
-                     :selector-eval-ruby ".klipse-ruby"}}
  :description-include-elements #{:p :h1 :h2 :h3 :h4 :h5 :h6}
- :debug?                       false}
+ :debug?                       false
+
+ :klipse                       
+ {
+   :settings 
+   {
+     :css-theme "/css/codehighlight.css"
+     :selector             ".klipse-cljs"
+     :selector-reagent     ".klipse-reagent"
+     :selector-eval-ruby   ".klipse-ruby"
+     :selector-eval-python ".klipse-python"
+    
+     :codemirror-options-in 
+     {
+       :line-numbers true
+     }
+     :codemirror-options-out 
+     {
+       :line-numbers true
+     }
+    }
+  }
+}
