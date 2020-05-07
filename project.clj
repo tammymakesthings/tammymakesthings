@@ -20,6 +20,7 @@
     [cryogen-core "0.3.1"]
     [philoskim/debux "0.6.5"]
     [slugger "1.0.1"]
+    [enlive "1.1.6"]
   ]
 
   :profiles

@@ -19,6 +19,7 @@
   (:require [cryogen-core.compiler :refer [compile-assets-timed]]
             [clojure.java.io :as io]
             [tammymakesthings.generator :as gen]
+            [net.cgrand.enlive-html :as enlive]
             [debux.cs.core :as d :refer-macros [clog clogn dbg dbgn break]]
             [cryogen-core.plugins :refer [load-plugins]])
   (:gen-class))

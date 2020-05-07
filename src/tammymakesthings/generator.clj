@@ -3,7 +3,7 @@
 ;;;; tammymakesthings - Static blog generator for tammymakesthings.com
 ;;;; File         : generator.clj
 ;;;; Description  : Content generator (posts, pages, projects, etc)
-;;;; Last Updated : Time-stamp: <2020-05-07 14:50:42 tammy>
+;;;; Last Updated : Time-stamp: <2020-05-07 15:11:34 tammy>
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; Based on the cryogen static site builder
 ;;;; (github - cryogen-project/cryogen)
@@ -19,7 +19,9 @@
   (:require [cryogen-core.compiler :refer [compile-assets-timed]]
             [clojure.java.io :as io]
             [debux.cs.core :as d :refer-macros [clog clogn dbg dbgn break]]
+            [net.cgrand.enlive-html :as enlive]
             [cryogen-core.plugins :refer [load-plugins]])
+  (:import (java.io StringReader))
   (:gen-class))
 
 (use 'debux.core)
