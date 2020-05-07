@@ -3,7 +3,7 @@
 ;;;; tammymakesthings - Static blog generator for tammymakesthings.com
 ;;;; File         : generator.clj
 ;;;; Description  : Content generator (posts, pages, projects, etc)
-;;;; Last Updated : Time-stamp: <2020-05-07 14:41:39 tammy>
+;;;; Last Updated : Time-stamp: <2020-05-07 14:46:55 tammy>
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; Based on the cryogen static site builder
 ;;;; (github - cryogen-project/cryogen)
@@ -116,16 +116,27 @@
     (spit filename file-contents)
     (println filename)))
 
-(defn build-site!
-  []
-  (cryogen-core.compiler/compile-assets-timed
-  {:extend-params-fn
-   (fn extend-params [params site-data]
-     (let [tag-count (->> (:posts-by-tag site-data)
+(defn generate-tag-counts
+  "Generate the tag count for each tag."
+  [params site-data]
+  (let [tag-count (->> (:posts-by-tag site-data)
                           (map (fn [[k v]] [k (count v)]))
                           (into {}))]
        (update
          params :tags
          #(map (fn [t] (assoc t
                          :count (tag-count (:name t))))
-               %))))}))
+               %))))
+
+(defn extend-params-hook
+  "extend-params-fn hook"
+  [params site-data]
+  (generate-tag-counts params site-data))
+
+(defn build-site!
+  []
+  (cryogen-core.compiler/compile-assets-timed
+    {
+     :extend-params-fn extend-params-hook
+    }
+    ))
