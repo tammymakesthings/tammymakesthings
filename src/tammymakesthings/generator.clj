@@ -3,7 +3,7 @@
 ;;;; tammymakesthings - Static blog generator for tammymakesthings.com
 ;;;; File         : generator.clj
 ;;;; Description  : Content generator (posts, pages, projects, etc)
-;;;; Last Updated : Time-stamp: <2020-05-07 14:46:55 tammy>
+;;;; Last Updated : Time-stamp: <2020-05-07 14:50:42 tammy>
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; Based on the cryogen static site builder
 ;;;; (github - cryogen-project/cryogen)
@@ -128,15 +128,28 @@
                          :count (tag-count (:name t))))
                %))))
 
+(defn article-slug-param
+  "Allow a slug parameter for articles that overrides the URL."
+  [{:keys [slug] :as article} config]
+  (if slug
+    (assoc article :uri (str "/" slug "/"))
+    article))
+
 (defn extend-params-hook
   "extend-params-fn hook"
   [params site-data]
   (generate-tag-counts params site-data))
+
+(defn update-article-hook
+  "update-article-fn hook"
+  [article config]
+  (article-slug-param article config))
 
 (defn build-site!
   []
   (cryogen-core.compiler/compile-assets-timed
     {
      :extend-params-fn extend-params-hook
+     :update-article-fn update-article-hook
     }
     ))
