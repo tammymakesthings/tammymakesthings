@@ -3,7 +3,7 @@
 ;;;; tammymakesthings - Static blog generator for tammymakesthings.com
 ;;;; File         : generator.clj
 ;;;; Description  : Content generator (posts, pages, projects, etc)
-;;;; Last Updated : Time-stamp: <2020-04-25 19:15:53 tammy>
+;;;; Last Updated : Time-stamp: <2020-05-07 14:41:39 tammy>
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; Based on the cryogen static site builder
 ;;;; (github - cryogen-project/cryogen)
@@ -118,4 +118,14 @@
 
 (defn build-site!
   []
-  (compile-assets-timed))
+  (cryogen-core.compiler/compile-assets-timed
+  {:extend-params-fn
+   (fn extend-params [params site-data]
+     (let [tag-count (->> (:posts-by-tag site-data)
+                          (map (fn [[k v]] [k (count v)]))
+                          (into {}))]
+       (update
+         params :tags
+         #(map (fn [t] (assoc t
+                         :count (tag-count (:name t))))
+               %))))}))
