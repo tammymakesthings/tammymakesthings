@@ -50,7 +50,8 @@
     (->> (get-resource f)
          file-seq
          (filter (ignore ignored-files))
-         (filter (fn [^java.io.File file] (-> file .getName (.endsWith ext)))))
+         (filter (fn [^java.io.File file] (-> file .getName 
+                                              (.endsWith ext)))))
     []))
 
 (defn create-folder [folder]
@@ -66,21 +67,26 @@
   (create-file file data))
 
 (defn wipe-public-folder [keep-files]
-  (let [filenamefilter (reify java.io.FilenameFilter (accept [this _ filename] (not (some #{filename} keep-files))))]
+  (let [filenamefilter (reify java.io.FilenameFilter 
+                         (accept [this _ filename] 
+                           (not (some #{filename} keep-files))))]
     (doseq [path (.listFiles (io/file public) filenamefilter)]
       (fs/delete-dir path))))
 
 (defn copy-dir [src target ignored-files]
   (fs/mkdirs target)
-  (let [^java.io.FilenameFilter filename-filter (apply reject-re-filter ignored-files)
-        files                                   (.listFiles (io/file src) filename-filter)]
+  (let [^java.io.FilenameFilter 
+        filename-filter (apply reject-re-filter ignored-files)
+        files                                   
+        (.listFiles (io/file src) filename-filter)]
     (doseq [^java.io.File f files]
       (let [out (io/file target (.getName f))]
         (if (.isDirectory f)
           (copy-dir f out ignored-files)
           (io/copy f out))))))
 
-(defn copy-resources [root {:keys [blog-prefix resources ignored-files]}]
+(defn copy-resources 
+  [root {:keys [blog-prefix resources ignored-files]}]
   (doseq [resource resources]
     (let [src    (path root resource)
           target (path public blog-prefix (fs/base-name resource))]

@@ -12,7 +12,8 @@
       (with-meta [node (assoc path :r [] :changed? true)] (meta loc)))))
 
 ;; (defn pr-nodes [nodes]
-;;   (->> nodes (map-indexed #(prn %1 ": " (->> (str %2) (take 40) (apply str)))) dorun))
+;;   (->> nodes (map-indexed #(prn %1 ": " (->> (str %2) (take 40) (apply
+;;   str)))) dorun))
 ;;
 ;; (defn pr-rights [loc]
 ;;   (->> loc zip/rights pr-nodes))
@@ -38,7 +39,8 @@
 
 (defn find-nearest-left
   "Find the nearest left loc of the given `loc`. If it is the leftmost one,
-  search up until you find a node that has a left neighbour. Return nil if none."
+  search up until you find a node that has a left neighbour. Return nil if
+  none."
   [loc]
   (when-not (root? loc)
     (or (zip/left loc)
@@ -51,8 +53,8 @@
 
 (defn cut-tree-vertically
   "Given a Zipper, find a node matching the `pred` and cut the tree vertically
-  there (effectively removing all content but closing tags).
-  Returns the root of the tree. Returns nil if `pred` matches nothing."
+  there (effectively removing all content but closing tags).  Returns the root
+  of the tree. Returns nil if `pred` matches nothing."
   [loc pred]
   {:pre [loc pred]}
   (some-> loc

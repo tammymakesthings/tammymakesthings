@@ -5,8 +5,8 @@
     [net.cgrand.enlive-html :as enlive]))
 
 (defn filter-html-elems
-  "Recursively walks a sequence of enlive-style html elements depth first
-  and returns a flat sequence of the elements where (pred elem)"
+  "Recursively walks a sequence of enlive-style html elements depth first and
+  returns a flat sequence of the elements where (pred elem)"
   [pred html-elems]
   (reduce (fn [acc {:keys [content] :as elem}]
             (into (if (pred elem) (conj acc elem) acc)
@@ -26,9 +26,12 @@
   [node-or-nodes]
   (cond (string? node-or-nodes) node-or-nodes
         (empty? node-or-nodes) nil
-        (sequential? node-or-nodes) (map enlive->hiccup node-or-nodes)
-        :else (let [{:keys [tag attrs content]} node-or-nodes]
-                (conj-some [tag] (not-empty attrs) (enlive->hiccup content)))))
+        (sequential? node-or-nodes) 
+          (map enlive->hiccup node-or-nodes)
+        :else 
+        (let [{:keys [tag attrs content]} node-or-nodes]
+          (conj-some [tag] (not-empty attrs) 
+                     (enlive->hiccup content)))))
 
 (defn enlive->html-text [node-or-nodes]
   (->> node-or-nodes
@@ -41,8 +44,8 @@
        (apply str)))
 
 (defn trimmed-html-snippet
-  "Creates an enlive-snippet from `html-string` then removes
-  the newline nodes"
+  "Creates an enlive-snippet from `html-string` then removes the newline
+  nodes"
   [html-string]
   (->> (enlive/html-snippet html-string)
        (walk/postwalk

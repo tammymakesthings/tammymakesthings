@@ -35,7 +35,7 @@
                             :post-root-uri (root-uri :post-root-uri config)))
           check-overlap (fn [dirs]
                           (some #(subpath? % (:public-dest config)) dirs))]
-      
+
       (if (or (= (string/trim (:public-dest config)) "")
               (string/starts-with? (:public-dest config) ".")
               (check-overlap ["content" "themes" "src" "target"]))
@@ -71,7 +71,8 @@
            (or (:sass-src theme-config) []))))
 
 (defn resolve-config
-  "Loads the config file, merging in the overrides and, and filling in missing defaults"
+  "Loads the config file, merging in the overrides and, and filling in missing
+  defaults"
   ([]
    (resolve-config {}))
   ([overrides]

@@ -10,6 +10,8 @@
     ((resolve init))))
 
 (defn load-plugins []
-  (let [plugins (.getResources (ClassLoader/getSystemClassLoader) "plugin.edn")]
+  (let [plugins 
+        (.getResources (ClassLoader/getSystemClassLoader) 
+                       "plugin.edn")]
     (doseq [plugin (enumeration-seq plugins)]
       (load-plugin (. ^java.net.URL plugin openStream)))))
