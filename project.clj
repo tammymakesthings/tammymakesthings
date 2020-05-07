@@ -40,6 +40,7 @@
       :dependencies
       [
         [speclj "3.3.0"]
+        [kerodon "0.9.1"]
       ]
     }
   }
