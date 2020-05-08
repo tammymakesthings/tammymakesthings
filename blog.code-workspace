@@ -1,0 +1,19 @@
+{
+	"folders": [
+		{
+			"path": "."
+		}
+	],
+	"settings": {
+		"calva.replConnectSequences": [
+			{
+				"name": "Leiningen REPL",
+				"projectType": "Leiningen",
+				"cljsType": "none",
+				"menuSelections": {
+					"leinProfiles": [":dev"]
+				}
+			}
+		]
+	}
+}
