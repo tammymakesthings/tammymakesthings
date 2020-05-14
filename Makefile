@@ -71,7 +71,7 @@ gitadd:
 
 publish-remote: gitadd
 	git push
-	ssh $(DEPLOY_HOST) "cd ~/blog ; git pull ; make publish"
+	ssh $(DEPLOY_HOST) "cd ~/blog ; git pull ; lein run build"
 
 gitsnap: $(CONTENT_FILES)
 	@$(GIT) add content
