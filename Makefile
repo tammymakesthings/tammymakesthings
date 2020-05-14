@@ -11,6 +11,7 @@ SRC_FILES=$(wildcard src/tammymakesthings/*.clj)
 SPEC_FILES=$(wildcard spec/tammymakesthings/*.clj)
 CONFIG_FILES=project.clj content/config.edn
 CONTENT_FILES=$(shell find content/md -type f -print)
+DEPLOY_HOST=tmtlab.tammymakesthings.com
 DEPLOY_DIR=/var/www/tammymakesthings
 
 changed_files=$(shell git status -s | grep 'content/md' | grep '.md' | cut -d' ' -f2)
@@ -67,6 +68,10 @@ gitadd:
 		echo "* Adding additional content to git repo"; \
 		$(GIT) commit -a -m "Added additional content resources (from 'make add')"; \
 	fi
+
+publish-remote: gitadd
+	git push
+	ssh $(DEPLOY_HOST) "cd ~/blog ; git pull ; make publish"
 
 gitsnap: $(CONTENT_FILES)
 	@$(GIT) add content
