@@ -248,6 +248,24 @@ img {
   }
 }
 
+div#post div ol {
+    li {
+        margin-bottom: 12pt;
+    }
+    li:last-child {
+        margin-bottom: 0pt;
+    }
+}
+
+div#post div ul {
+    li {
+        margin-bottom: 12pt;
+    }
+    li:last-child {
+        margin-bottom: 0pt;
+    }
+}
+
 #post {
   margin: 0 auto;
   max-width: 700px;
