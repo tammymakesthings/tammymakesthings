@@ -69,9 +69,18 @@ gitadd:
 		$(GIT) commit -a -m "Added additional content resources (from 'make add')"; \
 	fi
 
-publish-remote: gitadd
+blogbuild-scr:
+	echo '#!/usr/bin/zsh --login' > $(HOME)/bin/blogbuild
+	echo '' >> $(HOME)/bin/blogbuild
+	echo 'export JAVA_HOME="/usr/local/java/oracle-jdk-8u241"' >> $(HOME)/bin/blogbuild
+	echo 'export PATH="${JAVA_HOME}/bin:${PATH}"' >> $(HOME)/bin/blogbuild
+	echo '' >> $(HOME)/bin/blogbuild
+	echo '( cd ${HOME}/blog ; "${HOME}/bin/lein" run build )' >> $(HOME)/bin/blogbuild
+	chmod 755 $(HOME)/bin/blogbuild
+
+publish-remote: gitadd blogbuild-scr
 	git push
-	ssh $(DEPLOY_HOST) "cd ~/blog ; git pull ; lein run build"
+	ssh $(DEPLOY_HOST) "cd \$\{HOME\}/blog ; git pull ; \$\{HOME\}/bin/blogbuild"
 
 gitsnap: $(CONTENT_FILES)
 	@$(GIT) add content
