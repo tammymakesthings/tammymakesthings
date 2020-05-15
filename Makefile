@@ -11,8 +11,10 @@ SRC_FILES=$(wildcard src/tammymakesthings/*.clj)
 SPEC_FILES=$(wildcard spec/tammymakesthings/*.clj)
 CONFIG_FILES=project.clj content/config.edn
 CONTENT_FILES=$(shell find content/md -type f -print)
-DEPLOY_HOST=tmtlab.tammymakesthings.com
+DEPLOY_HOST=tmtlab
+MAKE_HOST=$(shell /usr/bin/hostname)
 DEPLOY_DIR=/var/www/tammymakesthings
+
 
 changed_files=$(shell git status -s | grep 'content/md' | grep '.md' | cut -d' ' -f2)
 changed_all=$(shell git status -s | grep 'content/md' | grep '.md' | cut -d' ' -f2)
@@ -80,7 +82,7 @@ blogbuild-scr:
 
 publish-remote: gitadd blogbuild-scr
 	git push
-	ssh $(DEPLOY_HOST) "cd \$\{HOME\}/blog ; git pull ; \$\{HOME\}/bin/blogbuild"
+	ssh $(DEPLOY_HOST) "cd ${HOME}/blog ; git pull ; ${HOME}/bin/blogbuild"
 
 gitsnap: $(CONTENT_FILES)
 	@$(GIT) add content
