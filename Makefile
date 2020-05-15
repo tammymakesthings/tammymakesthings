@@ -12,9 +12,8 @@ SPEC_FILES=$(wildcard spec/tammymakesthings/*.clj)
 CONFIG_FILES=project.clj content/config.edn
 CONTENT_FILES=$(shell find content/md -type f -print)
 DEPLOY_HOST=tmtlab
-MAKE_HOST=$(shell /usr/bin/hostname)
+MAKE_HOST=$(shell /usr/bin/hostname -s)
 DEPLOY_DIR=/var/www/tammymakesthings
-
 
 changed_files=$(shell git status -s | grep 'content/md' | grep '.md' | cut -d' ' -f2)
 changed_all=$(shell git status -s | grep 'content/md' | grep '.md' | cut -d' ' -f2)
@@ -48,11 +47,6 @@ changed: $(changed_files)
 		done; \
 	fi
 
-build:
-	@$(LEIN) run build
-
-publish: build
-
 version:
 	@$(LEIN) run tool-version
 
@@ -80,9 +74,19 @@ blogbuild-scr:
 	echo '( cd ${HOME}/blog ; "${HOME}/bin/lein" run build )' >> $(HOME)/bin/blogbuild
 	chmod 755 $(HOME)/bin/blogbuild
 
-publish-remote: gitadd blogbuild-scr
+build-tmtlab:
+	@$(LEIN) run build
+
+build-remote: gitadd blogbuild-scr
 	git push
 	ssh $(DEPLOY_HOST) "cd ${HOME}/blog ; git pull ; ${HOME}/bin/blogbuild"
+
+build-wonderland: build-remote
+
+build:
+	make build-$(MAKE_HOST)
+
+publish: build
 
 gitsnap: $(CONTENT_FILES)
 	@$(GIT) add content
