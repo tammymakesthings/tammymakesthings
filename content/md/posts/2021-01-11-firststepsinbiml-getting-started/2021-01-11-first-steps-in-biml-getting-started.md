@@ -48,8 +48,8 @@ editor, it's helpful to install the BimlScript XSD schema to enable
 IntelliSense completion. To do this, simply download [the XSD file](biml.xsd)
 and put it in the following directory:
 
-- **32-bit Windows**: `C:\Program Files (x86)\Microsoft Visual Studio 14.0\Xml\Schemas`
-- **64-bit Windows**: `C:\Program Files\Microsoft Visual Studio 14.0\Xml\Schemas`
+- **32-bit Windows**: `C:\\Program Files (x86)\\Microsoft Visual Studio 14.0\\Xml\\Schemas`
+- **64-bit Windows**: `C:\\Program Files\\Microsoft Visual Studio 14.0\\Xml\\Schemas`
 
 After you've installed the XSD file, perform the following steps:
 
