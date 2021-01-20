@@ -1,9 +1,8 @@
-{ 
-	:title  "First Steps in BIML - 01: Getting Started”
-	:layout :post
-	:tags [“databases”, “BIML”, “First Steps in BIML”] 
+{
+  :title "First Steps in BIML - Getting Started"
+  :layout :post
+  :tags ["BIML", "First Steps in BIML", "data", "data engineering"]
 }
-
 This is the first in a series of posts I’m planning about the [BIML](https://docs.varigence.com/) language and the [BIMLExpress](https://varigence.com/bimlexpress) tool. BIML is short for **Business Intelligence Markup Language**, and it’s a tool for building [SQL Server Integration Services (SSIS)](https://docs.microsoft.com/en-us/sql/integration-services/sql-server-integration-services?view#sql-server-ver15) packages. I’m using BIML in my new job as a Data Engineer, and since I didn’t find many resources for learning it when I was starting I thought I’d begin documenting my experiences.
 
 ## Why Use BIML?
@@ -12,9 +11,11 @@ You might be wondering why BIML is necessary. After all, SSIS packages are just 
 
 Some of the advantages of BIML are:
 
-- **Human-readable syntax**. Xxx
-- **Template-driven package generation**. Xxx
-- **Automation of package generation with code**. Xxx
+- **Human-readable syntax**. Let's face it: Microsoft's XML definitions for SSIS packages are not very readable. BIML is easier to read.
+- **Template-driven package generation**. Need to generate 120 packages for a data warehouse load? You can script that with templates.
+- **Automation of package generation with code**. BIMLScript lets you call C# code to extend your package generation process in whatever ways you need to.
+
+We'll talk more about some of these capabilities in later articles.
 
 ## Getting Started with BIML
 
@@ -38,30 +39,11 @@ To create a new BIML project, follow these steps:
 2. Choose the “Integration Services Project” template.
 3. Name and save your project.
 4. Right click on the project in the Visual Studio solution explorer, and pick Add New BIML File.
-5. A new file called `BimlScript.BIML` will be added to the *Miscellaneous* folder of your project. Right click on this file and rename it to something useful. 
-
-### Editing BIML Files - The BIMLScript Add-In and XML Editors
-
-The BIMLExpress tool installs its own editor for BIML files, but I personally
-find it easter to use the XML editor built into Visual Studio. To use the XML
-editor, it's helpful to install the BimlScript XSD schema to enable
-IntelliSense completion. To do this, simply download [the XSD file](biml.xsd)
-and put it in the following directory:
-
-- **32-bit Windows**: `C:\\Program Files (x86)\\Microsoft Visual Studio 14.0\\Xml\\Schemas`
-- **64-bit Windows**: `C:\\Program Files\\Microsoft Visual Studio 14.0\\Xml\\Schemas`
-
-After you've installed the XSD file, perform the following steps:
-
-1. In Visual Studio, right click on your BIML file.
-2. Choose **Open With...** from the context menu.
-3. Click on **XML (Text) Editor** in the dialog list.
-4. Click the "Set as Default" button.
-5. Click OK.
+5. A new file called `BimlScript.BIML` will be added to the *Miscellaneous* folder of your project. Right click on this file and rename it to something useful.
 
 ### Creating Your BIML File
 
-Double-click your BIML file to open it in the BIMLExpress editor. (Or, if you followed the directions above, right-click on the `.BIML` file and pick “Open With...” and choose “XML (Text) Editor (Default)” from the dialog box). You’ll see the contents of your empty BIML file, which looks like this:
+Double-click your BIML file to open it in the BIMLExpress editor. You’ll see the contents of your empty BIML file, which looks like this:
 
 ```
 <Biml xmlns#“http://schemas.varigence.com/biml.xsd”>
@@ -76,7 +58,7 @@ In order to create an SSIS package that does anything useful, you need to define
 
 ```
 <Connections>
-	<Connection 
+	<Connection
 		Name#“AdventureWorks”
 		ConnectionString#“Provider#SQLNCLI;Server#(local);Trusted_Connection#True;Database#AdventureWorks2019”/>
 </Connections>
@@ -115,14 +97,14 @@ One of the nice things about BIML scripts is that you can centralize all of your
 </Package>
 ```
 
-Validate your BIML and generate packages again. (Tell BimlExpress to overwrite when you’re prompted). If you open `MyFirstPackage.dtsx`, you’ll notice it now contains a Connection Manager for your database. 
+Validate your BIML and generate packages again. (Tell BimlExpress to overwrite when you’re prompted). If you open `MyFirstPackage.dtsx`, you’ll notice it now contains a Connection Manager for your database.
 
 You might be tempted to leave it here, but since connections are often shared among multiple SSIS packages, let’s generate the connection manager at the project level. Fortunately, this is super simple to accomplish: Go back to the definition of your database connection in the [`<Connections>` ](https://docs.varigence.com/biml/api-reference/Varigence.Languages.Biml.Connection.AstConnectionBaseNode) section, and add the attribute `CreateInProject#“true”`, so it looks like this:
 
 ```
 <Connections>
-	<Connection 
-		Name#“AdventureWorks” 
+	<Connection
+		Name#“AdventureWorks”
 		CreateInProject#“true
 	ConnectionString#“Provider#SQLNCLI;Server#(local);Trusted_Connection#True;Database#AdventureWorks2019”/>
 </Connections>
@@ -157,14 +139,14 @@ Your completed BIML file should look like the following:
 ```
 <Biml xmlns=“http://schemas.varigence.com/biml.xsd”>
 	<Connections>
-		<Connection 
-			Name=“AdventureWorks” 
+		<Connection
+			Name=“AdventureWorks”
 			CreateInProject=“true
 			ConnectionString=“Provider=SQLNCLI;Server=(local);Trusted_Connection=True;Database=AdventureWorks2019”/>
 	</Connections>
 	<Package Name=“MyFirstPackage”>
 		<Connections>
-			<Connection 	
+			<Connection
 				ConnectionName=“AdventureWorks”/>
 		</Connections>
 		<Tasks>
