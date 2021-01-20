@@ -1,0 +1,18 @@
+<Biml xmlns=“http://schemas.varigence.com/biml.xsd”>
+	<Connections>
+		<Connection Name=“AdventureWorks” CreateInProject=“true
+			ConnectionString=“Provider=SQLNCLI;Server=(local);Trusted_Connection=True;Database=AdventureWorks2019”/>
+	</Connections>
+	<Package Name=“MyFirstPackage”>
+		<Connections>
+			<Connection ConnectionName=“AdventureWorks”/>
+		</Connections>
+		<Tasks>
+			<ExecuteSQL ConnectionName=“AdventureWorks” Name=“Do Some Work”>
+				<DirectInput>
+SELECT * FROM Sales.SalesOrderHeader;
+				</DirectInput>
+			</ExecuteSQL>
+		</Tasks>
+	</Package>
+</Biml>

@@ -37,12 +37,27 @@ To create a new BIML project, follow these steps:
 1. Launch Visual Studio and choose the “Create a new project” option from the Getting Started window.
 2. Choose the “Integration Services Project” template.
 3. Name and save your project.
-4. Right click on the project in the Visual Studio solution explorer, and pick Add New BIML File. ::Screenshot::
-5. A new file called `BimlScript.BIML` will be added to the *Miscellaneous* folder of your project. ::Screenshot:: Right click on this file and rename it to something useful. 
+4. Right click on the project in the Visual Studio solution explorer, and pick Add New BIML File.
+5. A new file called `BimlScript.BIML` will be added to the *Miscellaneous* folder of your project. Right click on this file and rename it to something useful. 
 
 ### Editing BIML Files - The BIMLScript Add-In and XML Editors
 
-::todo::
+The BIMLExpress tool installs its own editor for BIML files, but I personally
+find it easter to use the XML editor built into Visual Studio. To use the XML
+editor, it's helpful to install the BimlScript XSD schema to enable
+IntelliSense completion. To do this, simply download [the XSD file](biml.xsd)
+and put it in the following directory:
+
+- **32-bit Windows**: `C:\Program Files (x86)\Microsoft Visual Studio 14.0\Xml\Schemas`
+- **64-bit Windows**: `C:\Program Files\Microsoft Visual Studio 14.0\Xml\Schemas`
+
+After you've installed the XSD file, perform the following steps:
+
+1. In Visual Studio, right click on your BIML file.
+2. Choose **Open With...** from the context menu.
+3. Click on **XML (Text) Editor** in the dialog list.
+4. Click the "Set as Default" button.
+5. Click OK.
 
 ### Creating Your BIML File
 
@@ -162,6 +177,8 @@ SELECT * FROM Sales.SalesOrderHeader;
 	</Package>
 </Biml>
 ```
+
+You can download the completed BIMLScript file [here](MyPackage.biml).
 
 ## What’s Next?
 
