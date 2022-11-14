@@ -11,7 +11,8 @@ My [pronouns][pronouns] are **she/her** or **they/them**.
 
 ## What I Do
 
-In my professional life, I manage a talented team of [data engineers][dataeng] currently
+In my professional life, I manage a talented team of [data engineers][dataeng] at
+[Flywheel Digital][flywheel] (an [Ascential][ascential] company) who are currently
 building data infrastructure with [Python][python] and [Airflow][airflow] on the
 [AWS][aws] platform (among others). I'm also an advocate for company culture and
 values, particularly around LGBTQI+ inclusion and neurodiversity. I'm certified
@@ -54,10 +55,14 @@ a full-time [digital nomad][nomad].
 [adafruit]: https://adafruit.com/
 [adhd]: https://en.wikipedia.org/wiki/Attention_deficit_hyperactivity_disorder
 [airflow]: https://airflow.apache.org/
+[ascential]: https://ascential.com/
 [autistic]: https://en.wikipedia.org/wiki/Autism_spectrum
 [aws]: https://aws.amazon.com/what-is-aws/
 [bariuke]: https://www.musicianauthority.com/intro-to-baritone-ukulele/
 [circuitpython]: https://circuitpython.org/
+[dataeng]: https://en.wikipedia.org/wiki/Data_engineering
+[dei]: https://en.wikipedia.org/wiki/Diversity,_equity,_and_inclusion
+[flywheel]: https://flywheeldigital.com/
 [harpguitar]: https://en.wikipedia.org/wiki/Harp_guitar
 [kalakabe]: https://kalabrand.com/products/ka-be
 [lgbtqi]: https://en.wikipedia.org/wiki/LGBT
@@ -66,12 +71,10 @@ a full-time [digital nomad][nomad].
 [musictheory]: https://en.wikipedia.org/wiki/Music_theory
 [neurodivergent]: https://en.wikipedia.org/wiki/Neurodiversity
 [nomad]: https://en.wikipedia.org/wiki/Digital_nomad
+[pronouns]: https://pronouns.org/what-and-why
 [python]: https://python.org/
 [rv]: https://en.wikipedia.org/wiki/Recreational_vehicle
 [synuke]: https://emeraldguitars.com/models/synergy-uke/
 [tmtgh]: https://github.com/tammymakesthings
 [tmtmast]: https://techhub.social/@tammymakesthings
 [twitch]: https://twitch.tv/tammymakesthings
-[dei]: https://en.wikipedia.org/wiki/Diversity,_equity,_and_inclusion
-[pronouns]: https://pronouns.org/what-and-why
-[dataeng]: https://en.wikipedia.org/wiki/Data_engineering
