@@ -1,0 +1,434 @@
+{
+  "basics": {
+    "name": "Tamara L. Cravit",
+    "label": "Data Engineer and Engineering Leader",
+    "image": "",
+    "email": "tammycravit@me.com",
+    "phone": "(805) 448-8930",
+    "url": "https://github.com/tammymakesthings",
+    "summary": "Experienced Data & Software Professional • Proven Project Manager • Results & Relationships-Focused People Leader  • Advocate for Corporate Culture & Core Values",
+    "location": {
+      "address": "1215 E. Fillmore St., Unit 1",
+      "postalCode": "AZ 85006",
+      "city": "Phoenix",
+      "countryCode": "US",
+      "region": "Arizona"
+    },
+    "profiles": [
+      {
+        "network": "GitHub",
+        "username": "tammymakesthings",
+        "url": "https://github.com/tammymakesthings"
+      },
+      {
+        "network": "LinkedIn",
+        "username": "tammycravit",
+        "url": "https://linkedin.com/in/tammycravit"
+      }
+    ]
+  },
+  "work": [
+    {
+      "name": "Flywheel Digital",
+      "position": "Data Engineering Manager",
+      "url": "https://www.flywheeldigital.com/",
+      "startDate": "2022-04-15",
+      "endDate": "2024-07-08",
+      "summary": "Description…",
+      "highlights": [
+        "Led a team of 6 data engineers developing data management solutions using AWS, Azure and Snowflake.",
+        "Provided technical leadership in the architecture of a new data platform for the company's software.",
+        "Architected data flows in SnowSQL, Apache Airflow/Python, and Apache Kafka",
+        "Led the mentorship and technical skills development for the data engineering function, including teaching regular Python, SQL, and software development sessions for team members.",
+        "Collaborated in the leadership of the Engineering organization and its mission and partnered with the Product organization to lead the design, development, and implementation of new features for the Flywheel product.",
+        "Assisted with the management of the company's RDS, Redshift, and Snowflake databases, including query tuning and optimization and user account management.",
+        "Assisted with the management of the company's GitHub repos, including development of GitHub Actions workflows, Pull Request reviews, and repo creation/management."
+      ]
+    },
+    {
+      "name": "Blue Cross Blue Shield of Arizona",
+      "position": "Data Engineer",
+      "url": "https://www.azblue.com/",
+      "startDate": "2020-07-01",
+      "endDate": "2022-04-15",
+      "summary": "",
+      "highlights": [
+        "Designed, implemented, and supported data extraction, transformation and loading (ETL) processes to support a 50 TB Netezza Enterprise Data Warehouse (EDW) and associated SQL Server Operational Data Stores (ODSs).",
+        "Designed and implemented a process for loading flat-file data from vendors into a Microsoft SQL Server ODS to support government-mandated interoperability requirements.",
+        "Designed and developed tools and processes to support the Enterprise Data Warehouse team’s development and release processes."
+      ]
+    },
+    {
+      "name": "Mindbody Inc.",
+      "position": "Strategic Accounts Capacity Manager",
+      "url": "https://www.mindbodyonline.com/",
+      "startDate": "2019-08-01",
+      "endDate": "2020-07-01",
+      "summary": "",
+      "highlights": [
+        "Designed and implemented an end-to-end process for statements of work and change orders for professional services engagements, resulting in capture of almost $500K/year in previously unrealized revenue.",
+        "Collaborated cross-functionally to define a process for tracking, qualifying and responding to RFP and RFI requests, increasing our success bidding on these opportunities.",
+        "As Professional Services Track Lead, led and project managed a multi-million-dollar implementation of the FinancialForce Professional Services Automation tool to enable workload and revenue forecasting, capacity management, and project management for the Professional Services organization."
+      ]
+    },
+    {
+      "name": "Mindbody Inc.",
+      "position": "Senior Manager, Data Services",
+      "url": "https://www.mindbodyonline.com/",
+      "startDate": "2017-07-01",
+      "endDate": "2019-08-01",
+      "summary": "",
+      "highlights": [
+        "Drove the development of improved tools and processes for converting data for onboarding customers, increasing team efficiency by a factor of 4 and reducing re-work due to errors from 10% of team members' time to less than 1%.",
+        "Led the evolution of my team from \"Data Conversions\" to \"Data Services\", becoming the customer-facing focal point for all customer projects involving the manipulation of data in the MINDBODY ecosystem",
+        "Led the creation of a new Data Reporting team, developing processes and tools to deliver meaningful data reporting and Business Intelligence solutions to our customers.",
+        "Managed a software development team which creates both internal data management and manipulation tools and customer-facing self-service data migration solutions for our customers.",
+        "Advocated for our culture and Core Values, both as a member of the steering committee for the corporate Core Values Task Force and as a charter member of the EDI Task Force."
+      ]
+    },
+    {
+      "name": "Mindbody Inc.",
+      "position": "Manager, Data Conversions",
+      "url": "https://www.mindbodyonline.com/",
+      "startDate": "2015-12-01",
+      "endDate": "2017-07-01",
+      "summary": "",
+      "highlights": [
+        "Managed a team of 22 employees (with 5 direct reports), responsible for employee recruitment, retention, training, and performance management, as well as working with customers, executives, and other stakeholders to carry out my team’s function. Managed a total compensation budget of nearly $3 million.",
+        "Collaborated with a variety of internal stakeholders to completely redefine the job descriptions for my team to clarify roles and create clear career paths for Data Conversions team members. This realignment was so successful that several other teams completed their own career path realignments based upon the process and practices I developed.",
+        "Managed a 2-person development team creating internal data conversion tools. Created a scrum-like agile development process for this team using Trello and Microsoft TFS."
+      ]
+    },
+    {
+      "name": "Mindbody Inc.",
+      "position": "Database Operations Lead",
+      "url": "https://www.mindbodyonline.com/",
+      "startDate": "2015-02-01",
+      "endDate": "2015-12-01",
+      "summary": "",
+      "highlights": [
+        "Responsible for the daily operational stability of the Mindbody data platform, a highly concurrent Microsoft SQL Server environment with more than 50,000 databases and supporting over 80,000 batch request/second throughput.",
+        "Led my team in the areas of emergency escalations, process documentation and improvement, status reporting, mentoring and training, and related areas. ",
+        "On-call 24/7 incident response and troubleshooting.",
+        "Developed PowerShell scripts to completely install and configure new SQL Server instances to our standard requirements.",
+        "Managed a project to migrate 85 SQL Servers from iSCSI to VMDK storage and executed this project with no downtime."
+      ]
+    },
+    {
+      "name": "Mindbody Inc.",
+      "position": "Senior Database Administrator",
+      "url": "https://www.mindbodyonline.com/",
+      "startDate": "2013-04-01",
+      "endDate": "2015-02-01",
+      "summary": "",
+      "highlights": [
+        "Responsible for the daily operational stability of the Mindbody data platform, a highly concurrent Microsoft SQL Server environment with more than 50,000 databases and supporting nearly 80,000 batch request/second throughput.",
+        "On-call 24/7 incident response and troubleshooting.",
+        "Managed the migration of critical central server infrastructure from SQL Server 2008 to SQL Server 2012, which was executed on time and with no downtime.",
+        "Managed the migration of our Tableau BI/reporting server to a new instance, including testing and stakeholder communication. The migration was completed with no downtime."
+      ]
+    },
+    {
+      "name": "Taylored Software",
+      "position": "Senior Partner (Operating Partner)",
+      "startDate": "2001-01-01",
+      "endDate": "2015-04-01",
+      "summary": "",
+      "highlights": [
+        "Provided server management, database administration, software development and IT infrastructure consulting services to businesses of all sizes.",
+        "Managed the servers and databases for a high-availability intranet application used by more than 100,000 staff of a Fortune 500 corporation.",
+        "Software development in C#/.NET, Ruby/Ruby on Rails, Python and other technologies.",
+        "Project managed nearly all of our software development efforts, including planning, budgeting, scoping, and execution."
+      ]
+    }
+  ],
+  "education": [
+    {
+      "institution": "California State University - Monterey Bay",
+      "url": "https://www.csumb.edu/",
+      "area": "Legal Studies",
+      "studyType": "Advanced Paralegal Certificate"
+    },
+    {
+      "institution": "California State University - Monterey Bay",
+      "url": "https://www.csumb.edu/",
+      "area": "Legal Studies",
+      "studyType": "Paralegal Certificate"
+    },
+    {
+      "institution": "DePaul University",
+      "url": "https://www.depaul.edu/",
+      "area": "Communication",
+      "studyType": "Bachelor"
+    },
+    {
+      "institution": "Michigan State University",
+      "url": "https://www.msu.edu/",
+      "area": "Broadcast Telecommunication",
+      "studyType": "Bachelor"
+    }
+  ],
+  "certificates": [
+    {
+      "name": "Astronomer Certification for Apache Airflow Fundamentals",
+      "date": "2022-08-01",
+      "issuer": "Astronomer",
+      "url": "https://www.credly.com/badges/28f5dcb5-21de-49d6-8eeb-5b1b34e109c2/linked_in_profile"
+    },
+    {
+      "name": "SQL Performance Tuning IEPTO0",
+      "date": "2015-06-01",
+      "issuer": "SQLSkills.com",
+      "url": "https://www.sqlskills.com/sql-server-training/iepto1/"
+    },
+    {
+      "name": "SQL Server: Introduction to Extended Events",
+      "date": "2015-06-01",
+      "issuer": "Pluralsight",
+      "url": "http://www.pluralsight.com/courses/sqlserver-basicxevents"
+    },
+    {
+      "name": "SQL Server: Query Plan Analysis",
+      "date": "2015-06-01",
+      "issuer": "Pluralsight",
+      "url": "http://www.pluralsight.com/courses/sqlserver-query-plan-analysis"
+    },
+    {
+      "name": "SQL Server: Logging, Recovery and the Transaction Log",
+      "date": "2015-05-01",
+      "issuer": "Pluralsight",
+      "url": "http://www.pluralsight.com/courses/sqlserver-logging"
+    },
+    {
+      "name": "SQL Server: Why Physical Database Design Matters",
+      "date": "2015-05-01",
+      "issuer": "Pluralsight",
+      "url": "http://www.pluralsight.com/courses/sqlserver-why-physical-db-design-matters"
+    },
+    {
+      "name": "Introduction to Leadership and Management for Developers",
+      "date": "2015-02-01",
+      "issuer": "Pluralsight",
+      "url": "http://www.pluralsight.com/courses/introduction-leadership-management-developers"
+    },
+    {
+      "name": "Extending PowerShell",
+      "date": "2014-09-01",
+      "issuer": "Pluralsight",
+      "url": "http://www.pluralsight.com/courses/extending-powershell"
+    },
+    {
+      "name": "SQL Server: Advanced Corruption Recovery Techniques",
+      "date": "2014-08-01",
+      "issuer": "Pluralsight",
+      "url": "http://www.pluralsight.com/courses/sqlserver-advanced-corruption-recovery-techniques"
+    },
+    {
+      "name": "Tableau Server 8 Qualified Associate",
+      "date": "2014-05-01",
+      "issuer": "Tableau Software",
+      "url": "http://www.tableausoftware.com/support/certification"
+    },
+    {
+      "name": "Analysis Services Fundamentals",
+      "date": "2014-03-01",
+      "issuer": "Pluralsight",
+      "url": "http://www.pluralsight.com/courses/ssas-basic"
+    },
+    {
+      "name": "Integration Services Fundamentals",
+      "date": "2014-03-01",
+      "issuer": "Pluralsight",
+      "url": "http://www.pluralsight.com/courses/ssis-basic"
+    }
+  ],
+  "skills": [
+    {
+      "name": "Programming Languages",
+      "level": "Master",
+      "keywords": [
+        "Python",
+        "Go",
+        "Rust",
+        "C#/F#/.NET",
+        "Ruby",
+        "PowerShell",
+        "Common Lisp",
+        "Clojure",
+        "Transact-SQL (T-SQL)",
+        "SQL",
+        "Perl",
+        "JavaScript/Node.js"
+      ]
+    },
+    {
+      "name": "Database Servers",
+      "level": "Master",
+      "keywords": [
+        "Microsoft SQL Server",
+        "PostgreSQL",
+        "MySQL",
+        "Amazon Redshift",
+        "IBM Netezza",
+        "Snowflake",
+        "RDS",
+        "Redshift"
+      ]
+    },
+    {
+      "name": "NoSQL Databases",
+      "level": "Advanced",
+      "keywords": [
+        "Riak",
+        "MongoDB",
+        "AWS Data Lake",
+        "AWS Spectrum"
+      ]
+    },
+    {
+      "name": "Streaming Data",
+      "level": "Advanced",
+      "keywords": [
+        "Apache Kafka"
+      ]
+    },
+    {
+      "name": "BI Tools",
+      "level": "Master",
+      "keywords": [
+        "Tableau",
+        "Tableau 7 Certified Server Administrator",
+        "Microsoft PowerBI"
+      ]
+    },
+    {
+      "name": "Data Orchestration",
+      "level": "Advanced",
+      "keywords": [
+        "Apache Airflow",
+        "Retool",
+        "SnowSQL"
+      ]
+    },
+    {
+      "name": "Server infrastructure",
+      "level": "Advanced",
+      "keywords": [
+        "Cisco UCS",
+        "VMWare vSphere",
+        "NetApp",
+        "Amazon Web Services",
+        "Microsoft Azure"
+      ]
+    },
+    {
+      "name": "Cloud Infrastructure",
+      "level": "Advanced",
+      "keywords": [
+        "Amazon AWS",
+        "Microsoft Azure",
+        "Google Cloud Platform (GCP)",
+        "Heroku",
+        "DigitalOcean"
+      ]
+    },
+    {
+      "name": "Software Development",
+      "level": "Master",
+      "keywords": [
+        "Agile",
+        "Scrum",
+        "Kanban",
+        "Git",
+        "Github",
+        "Microsoft TFS",
+        "SOAP/REST API development",
+        "microservices"
+      ]
+    },
+    {
+      "name": "Operating Systems",
+      "level": "Master",
+      "keywords": [
+        "Linux",
+        "Unix",
+        "SunOS",
+        "Solaris",
+        "AIX",
+        "IRIX",
+        "HP/UX",
+        "FreeBSD",
+        "macOS",
+        "Microsoft Windows"
+      ]
+    },
+    {
+      "name": "Business Systems",
+      "level": "Master",
+      "keywords": [
+        "Salesforce SFDC",
+        "Salesforce Inbox",
+        "FinancialForce PSA",
+        "Microsoft SharePoint/OneDrive",
+        "Docusign/SpringCM",
+        "Slack",
+        "Microsoft Teams"
+      ]
+    },
+    {
+      "name": "Project Management",
+      "level": "Master",
+      "keywords": [
+        "Agile project management",
+        "PMBOK",
+        "Scrum",
+        "Waterfall",
+        "Microsoft Project",
+        "SmartSheet"
+      ]
+    },
+    {
+      "name": "Leadership",
+      "level": "Master",
+      "keywords": [
+        "People leadership",
+        "mentoring",
+        "team development",
+        "budgeting",
+        "performance management",
+        "capacity forecasting",
+        "cross-functional collaboration",
+        "OKRs",
+        "corporate management",
+        "corporate finance"
+      ]
+    }
+  ],
+  "Languages": [
+    {
+      "Language": "English",
+      "fluency": "native speaker"
+    },
+    {
+      "Language": "French",
+      "fluency": "advanced"
+    },
+    {
+      "Language": "Hebrew",
+      "fluency": "intermediate"
+    },
+    {
+      "Language": "American Sign Language",
+      "fluency": "advanced"
+    }
+  ],
+  "interests": [
+    {
+      "name": "Open Source Development",
+      "keywords": [
+        "Python",
+        "CircuitPython"
+      ]
+    }
+  ]
+}
