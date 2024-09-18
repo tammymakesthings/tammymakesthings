@@ -49,8 +49,6 @@ a full-time [digital nomad][nomad].
 
 [GitHub][tmtgh] | [Twitch][twitch] | [Mastodon][tmtmast]
 
-![Mental Health First Aider](./MHFAider.png "Mental Health First Aider")
-
 [adafruit]: https://adafruit.com/
 [adhd]: https://en.wikipedia.org/wiki/Attention_deficit_hyperactivity_disorder
 [autistic]: https://en.wikipedia.org/wiki/Autism_spectrum
