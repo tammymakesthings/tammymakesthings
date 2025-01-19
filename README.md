@@ -1,3 +1,7 @@
+<div hidden>
+  <a rel="me" href="https://mas.to/@tammymakesthings">Mastodon</a>
+</div>
+
 # Meet Tammy
 
 Hello! I'm Tammy. I'm an engineering leader, software developer, database
